@@ -3,10 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Martin/Desktop/Skole/Apputvikling/ApputviklingMappe1/app/src/main/res/layout/preferanser_xml.xml" value="0.1" />
+        <entry key="..\:/Users/William Nerem/Desktop/Skole/Apputvikling/ApputviklingMappe1/app/src/main/res/drawable/button_border.xml" value="0.22135416666666666" />
+        <entry key="..\:/Users/William Nerem/Desktop/Skole/Apputvikling/ApputviklingMappe1/app/src/main/res/drawable/ic_launcher_background.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/William Nerem/Desktop/Skole/Apputvikling/ApputviklingMappe1/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/William Nerem/Desktop/Skole/Apputvikling/ApputviklingMappe1/app/src/main/res/layout/preferanser.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/William Nerem/Desktop/Skole/Apputvikling/ApputviklingMappe1/app/src/main/res/layout/se_statistikk.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/William Nerem/Desktop/Skole/Apputvikling/ApputviklingMappe1/app/src/main/res/layout/start_spill.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Martin/Desktop/Skole/Apputvikling/ApputviklingMappe1/app/src/main/res/layout/preferanser_xml.xml" value="0.1" />
       </map>
     </option>
   </component>
