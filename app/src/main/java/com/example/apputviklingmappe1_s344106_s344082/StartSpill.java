@@ -6,17 +6,26 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
 public class StartSpill extends AppCompatActivity {
-    TextView tekst;
+
+    int currentSvar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_spill);
+
+        inputVerdi();
+        slettSiste();
+        svar();
+    }
+
+    private void inputVerdi(){
         final Button button_1 = (Button) findViewById(R.id.button_1);
         final Button button_2 = (Button) findViewById(R.id.button_2);
         final Button button_3 = (Button) findViewById(R.id.button_3);
@@ -27,11 +36,110 @@ public class StartSpill extends AppCompatActivity {
         final Button button_8 = (Button) findViewById(R.id.button_8);
         final Button button_9 = (Button) findViewById(R.id.button_9);
         final Button button_0 = (Button) findViewById(R.id.button_0);
-        tekst = (TextView) findViewById(R.id.svar);
+        TextView tekst = (TextView) findViewById(R.id.svar);
 
         button_1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                tekst.setText("1");
+                tekst.append("1");
+                currentSvar = Integer.parseInt(tekst.getText().toString());
+            }
+        });
+
+        button_2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                tekst.append("2");
+                currentSvar = Integer.parseInt(tekst.getText().toString());
+            }
+        });
+
+        button_3.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                tekst.append("3");
+                currentSvar = Integer.parseInt(tekst.getText().toString());
+            }
+        });
+
+        button_4.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                tekst.append("4");
+                currentSvar = Integer.parseInt(tekst.getText().toString());
+            }
+        });
+
+        button_5.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                tekst.append("5");
+                currentSvar = Integer.parseInt(tekst.getText().toString());
+            }
+        });
+
+        button_6.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                tekst.append("6");
+                currentSvar = Integer.parseInt(tekst.getText().toString());
+            }
+        });
+
+        button_7.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                tekst.append("7");
+                currentSvar = Integer.parseInt(tekst.getText().toString());
+            }
+        });
+
+        button_8.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                tekst.append("8");
+                currentSvar = Integer.parseInt(tekst.getText().toString());
+            }
+        });
+
+        button_9.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                tekst.append("9");
+                currentSvar = Integer.parseInt(tekst.getText().toString());
+            }
+        });
+
+        button_0.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                tekst.append("0");
+                currentSvar = Integer.parseInt(tekst.getText().toString());
+            }
+        });
+    }
+
+    private void slettSiste(){
+        final ImageButton slett = (ImageButton) findViewById(R.id.slett);
+
+        slett.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                TextView tekst = (TextView) findViewById(R.id.svar);
+                String gammelTekst = tekst.getText().toString();
+
+                if (currentSvar <= 0){
+                    return;
+                }
+
+                String nyTekst = gammelTekst.substring(0, gammelTekst.length() - 1);
+
+                if (gammelTekst.length() >= 2){
+                    currentSvar = Integer.parseInt(nyTekst);
+                } else {
+                    currentSvar = 0;
+                }
+
+                tekst.setText(nyTekst);
+            }
+        });
+    }
+
+    private void svar(){
+        final Button svar = (Button) findViewById(R.id.button_sendsvar);
+
+        svar.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                System.out.println(currentSvar);
             }
         });
     }

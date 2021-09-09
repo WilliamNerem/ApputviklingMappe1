@@ -21,14 +21,29 @@
             android:layout_marginBottom="100dp"
             android:layout_marginTop="10dp">
         </TextView>
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:text="29 - 16 ="
-            android:textSize="35sp">
+            android:gravity="center_horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:text="29 - 16 ="
+                android:textSize="35sp">
             </TextView>
+            <TextView
+                android:id="@+id/svar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/svar"
+                android:maxLength="5"
+                android:textSize="35sp">
+            </TextView>
+
         </LinearLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,19 +59,12 @@
             android:gravity="center_horizontal"
             android:orientation="horizontal"
             tools:context=".MainActivity">
-            <TextView
-                android:id="@+id/svar"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center_horizontal"
-                android:text="@string/svar"
-                android:textSize="35sp">
-                </TextView>
+
             <Button
                 android:id="@+id/button_sendsvar"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="@string/button_sendsvar"/>
+                android:text="@string/button_sendsvar" />
         </LinearLayout>
 
         <TableRow
@@ -68,7 +76,8 @@
                 android:id="@+id/button_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/button1"/>
+                android:text="@string/button1" />
+
             <Button
                 android:id="@+id/button_2"
                 android:layout_width="wrap_content"
@@ -130,12 +139,24 @@
                 android:text="@string/button9" />
         </TableRow>
 
-        <Button
-            android:id="@+id/button_0"
-            android:layout_width="wrap_content"
+        <TableRow
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/button0" />
+            android:layout_marginEnd="28dp"
+            android:gravity="end">
+
+            <Button
+                android:id="@+id/button_0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/button0" />
+
+            <ImageButton
+                android:id="@+id/slett"
+                android:layout_width="88dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/back_icon" />
+        </TableRow>
     </LinearLayout>
 
 </RelativeLayout>
