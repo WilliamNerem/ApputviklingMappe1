@@ -14,11 +14,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         final Button button_start = (Button)findViewById(R.id.button_start);
+        final Button button_statistikk = (Button)findViewById(R.id.button_statistikk);
 
         button_start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, StartSpill.class));
+            }
+        });
+
+        button_statistikk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, SeStatistikk.class));
             }
         });
     }
