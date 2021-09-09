@@ -4,6 +4,8 @@
     <string name="sestatistikk">Se statistikk</string>
     <string name="preferanser">Se preferanser</string>
     <string name="overskriftMain">Mattespill</string>
+    <string name="overskriftPreferanser">Preferanser</string>
+    <string name="infoPreferanser">Her kan du velge antall regnestykker du skal løse i spillet</string>
     <string name="button1">1</string>
     <string name="button2">2</string>
     <string name="button3">3</string>
@@ -14,4 +16,8 @@
     <string name="button8">8</string>
     <string name="button9">9</string>
     <string name="button0">0</string>
+    <string name="preferanse5">5</string>
+    <string name="preferanse10">10</string>
+    <string name="preferanse15">15</string>
+    <string name="currentPreferanse">Din nåværende preferanse er:</string>
 </resources>
