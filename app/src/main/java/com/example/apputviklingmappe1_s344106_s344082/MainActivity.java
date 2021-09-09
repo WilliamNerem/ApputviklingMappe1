@@ -31,10 +31,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, SeStatistikk.class));
             }
         });
-        button_start.setOnClickListener(new View.OnClickListener() {
+        button_preferanser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, StartSpill.class));
+                startActivity(new Intent(MainActivity.this, Preferanser.class));
             }
         });
     }
