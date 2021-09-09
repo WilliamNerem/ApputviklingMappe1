@@ -35,5 +35,5 @@
         android:width="150dp"
         android:background="@drawable/button_border"
         android:text="@string/preferanser" />
-    
+
 </LinearLayout>
