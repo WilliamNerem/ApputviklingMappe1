@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 public class Preferanser extends AppCompatActivity {
 
-    int currentPreferanse = 5;
+    static int currentPreferanse = 5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

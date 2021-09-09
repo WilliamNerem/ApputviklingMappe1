@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="regnestykker">
+        <item>21 – 12 =</item>
+        <item>3 + 12 =</item>
+        <item>9 * 5 =</item>
+        <item>41 – 10 =</item>
+        <item>2 * 3 =</item>
+        <item>16 + 16 =</item>
+        <item>99 – 12 =</item>
+        <item>150 + 61 =</item>
+        <item>7 + 55 =</item>
+        <item>10 / 5 =</item>
+        <item>16 / 4 =</item>
+        <item>9 + 19 =</item>
+        <item>15 – 8 =</item>
+        <item>90 + 12 =</item>
+        <item>42 / 7 =</item>
+    </string-array>
+
+    <string-array name="svar">
+        <item>9</item>
+        <item>15</item>
+        <item>45</item>
+        <item>31</item>
+        <item>6</item>
+        <item>32</item>
+        <item>87</item>
+        <item>211</item>
+        <item>62</item>
+        <item>2</item>
+        <item>4</item>
+        <item>28</item>
+        <item>7</item>
+        <item>102</item>
+        <item>6</item>
+    </string-array>
+</resources>

@@ -1,6 +1,7 @@
 package com.example.apputviklingmappe1_s344106_s344082;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,18 +12,30 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.Random;
+
 public class StartSpill extends AppCompatActivity {
 
-    int currentSvar;
+    int currentSvar = -1;
+    String[] regnestykker;
+    String[] svarArray;
+    int indexInArray;
+    int antallRegnestykkerBesvart;
+    static int antallFeil;
+    static int antallRiktig;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_spill);
 
+        Resources res = getResources();
+        regnestykker = res.getStringArray(R.array.regnestykker);
+        svarArray = res.getStringArray(R.array.svar);
         inputVerdi();
         slettSiste();
-        svar();
+        sendSvar();
+        hentRegnestykke();
     }
 
     private void inputVerdi(){
@@ -116,8 +129,9 @@ public class StartSpill extends AppCompatActivity {
             public void onClick(View v) {
                 TextView tekst = (TextView) findViewById(R.id.svar);
                 String gammelTekst = tekst.getText().toString();
+                int svarLengde = String.valueOf(currentSvar).length();
 
-                if (currentSvar <= 0){
+                if (currentSvar < 0){
                     return;
                 }
 
@@ -126,7 +140,7 @@ public class StartSpill extends AppCompatActivity {
                 if (gammelTekst.length() >= 2){
                     currentSvar = Integer.parseInt(nyTekst);
                 } else {
-                    currentSvar = 0;
+                    currentSvar = -1;
                 }
 
                 tekst.setText(nyTekst);
@@ -134,13 +148,67 @@ public class StartSpill extends AppCompatActivity {
         });
     }
 
-    private void svar(){
+    private void sendSvar(){
         final Button svar = (Button) findViewById(R.id.button_sendsvar);
 
         svar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                System.out.println(currentSvar);
+                antallRegnestykkerBesvart++;
+                sjekkSvar();
+                regnestykker = fjernFraArray(regnestykker, indexInArray);
+                svarArray = fjernFraArray(svarArray, indexInArray);
+                if (Preferanser.currentPreferanse == antallRegnestykkerBesvart){
+                    tilOppsummering();
+                    return;
+                }
+                TextView tekst = (TextView) findViewById(R.id.svar);
+                String nyTekst = "";
+                tekst.setText(nyTekst);
+                hentRegnestykke();
             }
         });
+    }
+
+    private void sjekkSvar(){
+        TextView riktig = (TextView) findViewById(R.id.antallRiktig);
+        TextView feil = (TextView) findViewById(R.id.antallFeil);
+        int svar = Integer.parseInt(svarArray[indexInArray]);
+
+        if (svar == currentSvar){
+            antallRiktig ++;
+            String setRiktig = "Antall riktig svar: " + antallRiktig;
+            riktig.setText(setRiktig);
+        } else {
+            antallFeil ++;
+            String setFeil = "Antall feil svar: " + antallFeil;
+            feil.setText(setFeil);
+        }
+    }
+
+    private void hentRegnestykke(){
+        TextView tekst = (TextView) findViewById(R.id.regnestykke);
+        Random r = new Random();
+        int randomRegnestykke = r.nextInt(regnestykker.length);
+        tekst.setText(regnestykker[randomRegnestykke]);
+        indexInArray = randomRegnestykke;
+    }
+
+    private String[] fjernFraArray(String[] arr, int fjernIndex){
+        String[] tmpArray = new String[arr.length - 1];
+        int index = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+
+            if (i == fjernIndex) {
+                continue;
+            }
+            tmpArray[index] = arr[i];
+            index ++;
+        }
+        return tmpArray;
+    }
+
+    private void tilOppsummering(){
+        startActivity(new Intent(StartSpill.this, Oppsummering.class));
     }
 }
