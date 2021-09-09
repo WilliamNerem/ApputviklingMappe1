@@ -26,6 +26,10 @@
             android:name=".SeStatistikk"
             android:label="@string/app_name">
         </activity>
+        <activity
+            android:name=".Preferanser"
+            android:label="ApputviklingMappe1_s344106_s344082">
+        </activity>
     </application>
 
 </manifest>

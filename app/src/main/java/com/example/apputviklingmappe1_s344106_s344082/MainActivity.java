@@ -15,18 +15,26 @@ public class MainActivity extends AppCompatActivity {
 
         final Button button_start = (Button)findViewById(R.id.button_start);
         final Button button_statistikk = (Button)findViewById(R.id.button_statistikk);
+        final Button button_preferanser = (Button)findViewById(R.id.button_preferanser);
 
         button_start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, StartSpill.class));
             }
+
         });
 
         button_statistikk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, SeStatistikk.class));
+            }
+        });
+        button_start.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, StartSpill.class));
             }
         });
     }
