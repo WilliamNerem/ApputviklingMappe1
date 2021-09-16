@@ -56,9 +56,9 @@
                 android:id="@+id/svar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
+                android:gravity="start"
                 android:text="@string/svar"
-                android:maxLength="5"
+                android:maxLength="3"
                 android:textSize="35sp">
             </TextView>
 

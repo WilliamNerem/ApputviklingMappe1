@@ -40,31 +40,29 @@
                 android:text="@string/antallFeil"
                 android:textSize="11sp"
                 android:layout_alignParentEnd="true"/>
-            <TableRow
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical">>
-            <TextView
-                android:id="@+id/regnestykke"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_marginStart="175dp"
-                android:layout_marginHorizontal="20dp"
-                android:text="@string/regnestykke"
-                android:textSize="35sp">
-            </TextView>
-            <TextView
-                android:id="@+id/svar"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:gravity="center_horizontal"
-                android:text="@string/svar"
-                android:maxLength="5"
-                android:textSize="35sp">
-            </TextView>
-            </TableRow>
+                android:gravity="center_horizontal">
+                <TextView
+                    android:id="@+id/regnestykke"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:text="@string/regnestykke"
+                    android:textSize="35sp">
+                </TextView>
+                <TextView
+                    android:id="@+id/svar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:text="@string/svar"
+                    android:maxLength="3"
+                    android:textSize="35sp">
+                </TextView>
+
+            </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
 
