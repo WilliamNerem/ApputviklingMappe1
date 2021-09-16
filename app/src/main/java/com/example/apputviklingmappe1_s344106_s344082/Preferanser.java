@@ -1,6 +1,8 @@
 package com.example.apputviklingmappe1_s344106_s344082;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,8 +10,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class Preferanser extends AppCompatActivity {
+import java.util.Locale;
 
+public class Preferanser extends AppCompatActivity {
+    protected Preferanser MyApp;
     static int currentPreferanse = 5;
 
     @Override
@@ -18,6 +22,7 @@ public class Preferanser extends AppCompatActivity {
         setContentView(R.layout.preferanser);
 
         endrePreferanse();
+        settSpråk();
     }
 
     public void endrePreferanse(){
@@ -57,5 +62,21 @@ public class Preferanser extends AppCompatActivity {
          preferanseTekst.setText(tekst);
      }
 
+    public static void setLocale(Activity activity, String languageCode) {
+        Locale locale = new Locale(languageCode);
+        Locale.setDefault(locale);
+        Resources resources = activity.getResources();
+        Configuration config = resources.getConfiguration();
+        config.setLocale(locale);
+        resources.updateConfiguration(config, resources.getDisplayMetrics());
+    }
+    private void settSpråk() {
+        final Button button_lang_de = (Button) findViewById(R.id.button_lang_de);
+        button_lang_de.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                setLocale(MyApp, "de");
+            }
+        });
+    }
 
 }
