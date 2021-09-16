@@ -56,6 +56,4 @@ public class Preferanser extends AppCompatActivity {
          String tekst = getString(R.string.currentPreferanse, currentPreferanse);
          preferanseTekst.setText(tekst);
      }
-
-
 }

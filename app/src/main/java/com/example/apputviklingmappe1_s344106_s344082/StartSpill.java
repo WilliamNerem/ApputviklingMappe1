@@ -2,6 +2,7 @@ package com.example.apputviklingmappe1_s344106_s344082;
 
 import android.content.Intent;
 import android.content.res.Resources;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,22 +17,30 @@ import java.util.Random;
 
 public class StartSpill extends AppCompatActivity {
 
-    int currentSvar = -1;
-    String[] regnestykker;
+    String[] regnestykkerArray;
     String[] svarArray;
     int indexInArray;
+    int antallFeil;
+    int antallRiktig;
+    int currentSvar = -1;
     int antallRegnestykkerBesvart;
-    static int antallFeil;
-    static int antallRiktig;
+    private TextView tvAntallRiktig;
+    private TextView tvAntallFeil;
+    private TextView tvRegnestykke;
+    private TextView tvSvar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_spill);
 
-        resetVerdier();
+        tvAntallRiktig = (TextView) findViewById(R.id.antallRiktig);
+        tvAntallFeil = (TextView) findViewById(R.id.antallFeil);
+        tvRegnestykke = (TextView) findViewById(R.id.regnestykke);
+        tvSvar = (TextView) findViewById(R.id.svar);
+
         Resources res = getResources();
-        regnestykker = res.getStringArray(R.array.regnestykker);
+        regnestykkerArray = res.getStringArray(R.array.regnestykker);
         svarArray = res.getStringArray(R.array.svar);
         inputVerdi();
         slettSiste();
@@ -40,19 +49,11 @@ public class StartSpill extends AppCompatActivity {
         renderRiktigOgFeil();
     }
 
-    private void resetVerdier(){
-        antallRiktig = 0;
-        antallFeil = 0;
-        antallRegnestykkerBesvart = 0;
-    }
-
     private void renderRiktigOgFeil(){
-        TextView riktig = (TextView) findViewById(R.id.antallRiktig);
-        TextView feil = (TextView) findViewById(R.id.antallFeil);
         String tekstRiktig = getString(R.string.antallRiktig, antallRiktig);
         String tekstFeil = getString(R.string.antallFeil, antallFeil);
-        riktig.setText(tekstRiktig);
-        feil.setText(tekstFeil);
+        tvAntallRiktig.setText(tekstRiktig);
+        tvAntallFeil.setText(tekstFeil);
     }
 
     private void inputVerdi(){
@@ -66,77 +67,76 @@ public class StartSpill extends AppCompatActivity {
         final Button button_8 = (Button) findViewById(R.id.button_8);
         final Button button_9 = (Button) findViewById(R.id.button_9);
         final Button button_0 = (Button) findViewById(R.id.button_0);
-        TextView tekst = (TextView) findViewById(R.id.svar);
 
         button_1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                tekst.append("1");
-                currentSvar = Integer.parseInt(tekst.getText().toString());
+                oppdaterSvar(1);
             }
         });
 
         button_2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                tekst.append("2");
-                currentSvar = Integer.parseInt(tekst.getText().toString());
+                oppdaterSvar(2);
             }
         });
 
         button_3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                tekst.append("3");
-                currentSvar = Integer.parseInt(tekst.getText().toString());
+                oppdaterSvar(3);
             }
         });
 
         button_4.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                tekst.append("4");
-                currentSvar = Integer.parseInt(tekst.getText().toString());
+                oppdaterSvar(4);
             }
         });
 
         button_5.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                tekst.append("5");
-                currentSvar = Integer.parseInt(tekst.getText().toString());
+                oppdaterSvar(5);
             }
         });
 
         button_6.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                tekst.append("6");
-                currentSvar = Integer.parseInt(tekst.getText().toString());
+                oppdaterSvar(6);
             }
         });
 
         button_7.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                tekst.append("7");
-                currentSvar = Integer.parseInt(tekst.getText().toString());
+                oppdaterSvar(7);
             }
         });
 
         button_8.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                tekst.append("8");
-                currentSvar = Integer.parseInt(tekst.getText().toString());
+                oppdaterSvar(8);
             }
         });
 
         button_9.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                tekst.append("9");
-                currentSvar = Integer.parseInt(tekst.getText().toString());
+                oppdaterSvar(9);
             }
         });
 
         button_0.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                tekst.append("0");
-                currentSvar = Integer.parseInt(tekst.getText().toString());
+                oppdaterSvar(0);
             }
         });
+    }
+
+    private void oppdaterSvar(int i){
+        if (currentSvar == 0 || currentSvar == -1){
+            currentSvar = i;
+        } else {
+            currentSvar = currentSvar * 10 + i;
+        }
+        String strSvar = Integer.toString(currentSvar);
+        tvSvar.setText(strSvar);
     }
 
     private void slettSiste(){
@@ -144,8 +144,7 @@ public class StartSpill extends AppCompatActivity {
 
         slett.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                TextView tekst = (TextView) findViewById(R.id.svar);
-                String gammelTekst = tekst.getText().toString();
+                String gammelTekst = tvSvar.getText().toString();
                 int svarLengde = String.valueOf(currentSvar).length();
 
                 if (currentSvar < 0){
@@ -160,7 +159,7 @@ public class StartSpill extends AppCompatActivity {
                     currentSvar = -1;
                 }
 
-                tekst.setText(nyTekst);
+                tvSvar.setText(nyTekst);
             }
         });
     }
@@ -172,33 +171,33 @@ public class StartSpill extends AppCompatActivity {
             public void onClick(View v) {
                 antallRegnestykkerBesvart++;
                 sjekkSvar();
-                regnestykker = fjernFraArray(regnestykker, indexInArray);
+                regnestykkerArray = fjernFraArray(regnestykkerArray, indexInArray);
                 svarArray = fjernFraArray(svarArray, indexInArray);
                 if (Preferanser.currentPreferanse == antallRegnestykkerBesvart){
                     tilOppsummering();
                     return;
                 }
-                TextView tekst = (TextView) findViewById(R.id.svar);
                 String setTekst = getString(R.string.svar);
-                tekst.setText(setTekst);
+                tvSvar.setText(setTekst);
+                currentSvar = -1;
                 hentRegnestykke();
             }
         });
     }
 
     private void sjekkSvar(){
-        TextView riktig = (TextView) findViewById(R.id.antallRiktig);
-        TextView feil = (TextView) findViewById(R.id.antallFeil);
         int svar = Integer.parseInt(svarArray[indexInArray]);
+        System.out.println("svar: " + svar);
+        System.out.println("currentSvar: " + currentSvar);
 
         if (svar == currentSvar){
-            oppdaterSvar(riktig, "riktig");
+            oppdaterAntallRikitgOgFeil(tvAntallRiktig, "riktig");
         } else {
-            oppdaterSvar(feil, "feil");
+            oppdaterAntallRikitgOgFeil(tvAntallFeil, "feil");
         }
     }
 
-    private void oppdaterSvar(TextView tv, String check){
+    private void oppdaterAntallRikitgOgFeil(TextView tv, String check){
         System.out.println(tv.getId());
         if (check.equals("riktig")){
             antallRiktig ++;
@@ -213,10 +212,9 @@ public class StartSpill extends AppCompatActivity {
     }
 
     private void hentRegnestykke(){
-        TextView tekst = (TextView) findViewById(R.id.regnestykke);
         Random r = new Random();
-        int randomRegnestykke = r.nextInt(regnestykker.length);
-        tekst.setText(regnestykker[randomRegnestykke]);
+        int randomRegnestykke = r.nextInt(regnestykkerArray.length);
+        tvRegnestykke.setText(regnestykkerArray[randomRegnestykke]);
         indexInArray = randomRegnestykke;
     }
 
@@ -237,5 +235,37 @@ public class StartSpill extends AppCompatActivity {
 
     private void tilOppsummering(){
         startActivity(new Intent(StartSpill.this, Oppsummering.class));
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putString("antallRiktig", tvAntallRiktig.getText().toString());
+        outState.putString("antallFeil", tvAntallFeil.getText().toString());
+        outState.putString("regnestykke", tvRegnestykke.getText().toString());
+        outState.putString("svar", tvSvar.getText().toString());
+        outState.putInt("currentSvar", currentSvar);
+        outState.putInt("indexInArray", indexInArray);
+        outState.putInt("antallRegnestykkerBesvart", antallRegnestykkerBesvart);
+        outState.putInt("intAntallFeil", antallFeil);
+        outState.putInt("intAntallRiktig", antallRiktig);
+        outState.putStringArray("regnestykkerArray", regnestykkerArray);
+        outState.putStringArray("svarArray", svarArray);
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        tvAntallRiktig.setText(savedInstanceState.getString("antallRiktig"));
+        tvAntallFeil.setText(savedInstanceState.getString("antallFeil"));
+        tvRegnestykke.setText(savedInstanceState.getString("regnestykke"));
+        tvSvar.setText(savedInstanceState.getString("svar"));
+        currentSvar = savedInstanceState.getInt("currentSvar");
+        indexInArray = savedInstanceState.getInt("indexInArray");
+        antallRegnestykkerBesvart = savedInstanceState.getInt("antallRegnestykkerBesvart");
+        antallFeil = savedInstanceState.getInt("intAntallFeil");
+        antallRiktig = savedInstanceState.getInt("intAntallRiktig");
+        regnestykkerArray = savedInstanceState.getStringArray("regnestykkerArray");
+        svarArray = savedInstanceState.getStringArray("svarArray");
     }
 }
