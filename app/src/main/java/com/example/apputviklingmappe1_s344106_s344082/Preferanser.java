@@ -21,18 +21,16 @@ public class Preferanser extends AppCompatActivity {
     }
 
     public void endrePreferanse(){
-        String preferanseTekst = (String) getString(R.string.currentPreferanse);
         Button button5 = (Button)findViewById(R.id.button_preferanser_5);
         Button button10 = (Button)findViewById(R.id.button_preferanser_10);
         Button button15 = (Button)findViewById(R.id.button_preferanser_15);
-        final TextView endrePreferanseTekst = (TextView) findViewById(R.id.current_preferanse);
+        endrePreferanseTekst();
 
         button5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 currentPreferanse = 5;
-                String nyPreferanseTekst = preferanseTekst+" 5";
-                endrePreferanseTekst.setText(nyPreferanseTekst);
+                endrePreferanseTekst();
             }
         });
 
@@ -40,8 +38,7 @@ public class Preferanser extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 currentPreferanse = 10;
-                String nyPreferanseTekst = preferanseTekst+" 10";
-                endrePreferanseTekst.setText(nyPreferanseTekst);
+                endrePreferanseTekst();
             }
         });
 
@@ -49,11 +46,16 @@ public class Preferanser extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 currentPreferanse = 15;
-                String nyPreferanseTekst = preferanseTekst+" 15";
-                endrePreferanseTekst.setText(nyPreferanseTekst);
+                endrePreferanseTekst();
             }
         });
     }
+
+     public void endrePreferanseTekst(){
+         TextView preferanseTekst = (TextView) findViewById(R.id.current_preferanse);
+         String test = getString(R.string.currentPreferanse, currentPreferanse);
+         preferanseTekst.setText(test);
+     }
 
 
 }
