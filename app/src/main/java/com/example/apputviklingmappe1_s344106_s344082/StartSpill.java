@@ -29,6 +29,7 @@ public class StartSpill extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_spill);
 
+        resetVerdier();
         Resources res = getResources();
         regnestykker = res.getStringArray(R.array.regnestykker);
         svarArray = res.getStringArray(R.array.svar);
@@ -36,6 +37,22 @@ public class StartSpill extends AppCompatActivity {
         slettSiste();
         sendSvar();
         hentRegnestykke();
+        renderRiktigOgFeil();
+    }
+
+    private void resetVerdier(){
+        antallRiktig = 0;
+        antallFeil = 0;
+        antallRegnestykkerBesvart = 0;
+    }
+
+    private void renderRiktigOgFeil(){
+        TextView riktig = (TextView) findViewById(R.id.antallRiktig);
+        TextView feil = (TextView) findViewById(R.id.antallFeil);
+        String tekstRiktig = getString(R.string.antallRiktig, antallRiktig);
+        String tekstFeil = getString(R.string.antallFeil, antallFeil);
+        riktig.setText(tekstRiktig);
+        feil.setText(tekstFeil);
     }
 
     private void inputVerdi(){
@@ -162,8 +179,8 @@ public class StartSpill extends AppCompatActivity {
                     return;
                 }
                 TextView tekst = (TextView) findViewById(R.id.svar);
-                String nyTekst = "";
-                tekst.setText(nyTekst);
+                String setTekst = getString(R.string.svar);
+                tekst.setText(setTekst);
                 hentRegnestykke();
             }
         });
@@ -175,14 +192,24 @@ public class StartSpill extends AppCompatActivity {
         int svar = Integer.parseInt(svarArray[indexInArray]);
 
         if (svar == currentSvar){
+            oppdaterSvar(riktig, "riktig");
+        } else {
+            oppdaterSvar(feil, "feil");
+        }
+    }
+
+    private void oppdaterSvar(TextView tv, String check){
+        System.out.println(tv.getId());
+        if (check.equals("riktig")){
             antallRiktig ++;
-            String setRiktig = "Antall riktig svar: " + antallRiktig;
-            riktig.setText(setRiktig);
+            String tekstRiktig = getString(R.string.antallRiktig, antallRiktig);
+            tv.setText(tekstRiktig);
         } else {
             antallFeil ++;
-            String setFeil = "Antall feil svar: " + antallFeil;
-            feil.setText(setFeil);
+            String tekstFeil = getString(R.string.antallFeil, antallFeil);
+            tv.setText(tekstFeil);
         }
+
     }
 
     private void hentRegnestykke(){

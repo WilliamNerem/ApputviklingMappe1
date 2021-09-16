@@ -53,8 +53,8 @@ public class Preferanser extends AppCompatActivity {
 
      public void endrePreferanseTekst(){
          TextView preferanseTekst = (TextView) findViewById(R.id.current_preferanse);
-         String test = getString(R.string.currentPreferanse, currentPreferanse);
-         preferanseTekst.setText(test);
+         String tekst = getString(R.string.currentPreferanse, currentPreferanse);
+         preferanseTekst.setText(tekst);
      }
 
 

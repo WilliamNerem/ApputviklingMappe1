@@ -8,8 +8,8 @@
     <string name="infoPreferanser">Her kan du velge antall regnestykker du skal løse i spillet</string>
     <string name="overskriftStartSpill">Regn ut følgende</string>
     <string name="regnestykke"/>
-    <string name="antallRiktig">Antall riktig svar: 0</string>
-    <string name="antallFeil">Antall feil svar: 0</string>
+    <string name="antallRiktig">Antall riktig svar: %1$d</string>
+    <string name="antallFeil">Antall feil svar: %1$d</string>
     <string name="button1">1</string>
     <string name="button2">2</string>
     <string name="button3">3</string>

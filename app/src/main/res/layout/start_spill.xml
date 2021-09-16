@@ -24,20 +24,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="100dp">
+
             <TextView
                 android:id="@+id/antallRiktig"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
                 android:layout_marginStart="20dp"
-                android:text="@string/antallRiktig"
-                android:textSize="11sp"
-                android:layout_alignParentStart="true"/>
+                android:textSize="11sp" />
             <TextView
                 android:id="@+id/antallFeil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
-                android:text="@string/antallFeil"
                 android:textSize="11sp"
                 android:layout_alignParentEnd="true"/>
         </RelativeLayout>
