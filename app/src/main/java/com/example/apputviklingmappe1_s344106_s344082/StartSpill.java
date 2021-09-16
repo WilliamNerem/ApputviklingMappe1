@@ -1,6 +1,8 @@
 package com.example.apputviklingmappe1_s344106_s344082;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -13,9 +15,11 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.Locale;
 import java.util.Random;
 
 public class StartSpill extends AppCompatActivity {
+    protected StartSpill MyApp;
 
     String[] regnestykkerArray;
     String[] svarArray;
