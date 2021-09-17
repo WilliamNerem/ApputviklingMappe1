@@ -8,12 +8,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.Locale;
 
 public class Preferanser extends AppCompatActivity {
-    protected Preferanser MyApp;
     static int currentPreferanse = 5;
 
     @Override
@@ -62,21 +62,39 @@ public class Preferanser extends AppCompatActivity {
          preferanseTekst.setText(tekst);
      }
 
-    public static void setLocale(Activity activity, String languageCode) {
-        Locale locale = new Locale(languageCode);
-        Locale.setDefault(locale);
-        Resources resources = activity.getResources();
-        Configuration config = resources.getConfiguration();
-        config.setLocale(locale);
-        resources.updateConfiguration(config, resources.getDisplayMetrics());
-    }
-    private void settSpråk() {
-        final Button button_lang_de = (Button) findViewById(R.id.button_lang_de);
+    public void settSpråk() {
+        final ImageButton button_lang_no = (ImageButton) findViewById(R.id.button_lang_no);
+        final ImageButton button_lang_de = (ImageButton) findViewById(R.id.button_lang_de);
+        settSpråkendring("");
+
+        button_lang_no.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+              settSpråkendring("no");
+          }
+      });
+
         button_lang_de.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                setLocale(MyApp, "de");
-            }
+         @Override
+         public void onClick(View v) {
+             settSpråkendring("de");
+          }
         });
+}
+    public void settSpråkendring(String lang) {
+        if (!lang.equals("")) {
+            Locale locale = new Locale(lang);
+            Locale.setDefault(locale);
+            Configuration config = new Configuration();
+            config.locale = locale;
+            getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+            RestartActivity();
+        }
     }
 
+    private void RestartActivity(){
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
+    }
 }

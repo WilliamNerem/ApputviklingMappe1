@@ -28,4 +28,5 @@
     <string name="currentPreferanse">Ihre aktuelle Präferenz ist: %1$d</string>
     <string name="overskriftOppsummering">Dies ist die Übersichtsseite</string>
     <string name="lang_de">Deutsch</string>
+    <string name="infoSpraak">Sprache auswählen</string>
 </resources>

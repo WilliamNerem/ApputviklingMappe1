@@ -19,7 +19,6 @@ import java.util.Locale;
 import java.util.Random;
 
 public class StartSpill extends AppCompatActivity {
-    protected StartSpill MyApp;
 
     String[] regnestykkerArray;
     String[] svarArray;
