@@ -1,13 +1,13 @@
 <resources>
-    <string name="app_name">ApputviklingMappe1_s344106_s344082</string>
+    <string name="app_name">Mattespill</string>
     <string name="startspill">Start spill</string>
     <string name="sestatistikk">Se statistikk</string>
     <string name="preferanser">Se preferanser</string>
     <string name="overskriftMain">Mattespill</string>
     <string name="overskriftPreferanser">Preferanser</string>
-    <string name="infoPreferanser">Velg antall regnestykker du skal løse i spillet</string>
+    <string name="overskriftStatistikk">Statistikk</string>
+    <string name="infoPreferanser">Her kan du velge antall regnestykker du skal løse i spillet</string>
     <string name="overskriftStartSpill">Regn ut følgende</string>
-    <string name="overskriftOppsummering">Oppsummering</string>
     <string name="regnestykke"/>
     <string name="antallRiktig">Antall riktig svar: %1$d</string>
     <string name="antallFeil">Antall feil svar: %1$d</string>
@@ -27,13 +27,19 @@
     <string name="preferanse10">10</string>
     <string name="preferanse15">15</string>
     <string name="currentPreferanse">Din nåværende preferanse er: %1$d</string>
-    <string name="oppsummeringInfo">Gratulerer! du fikk %1$d riktig og %2$d feil.</string>
+    <string name="overskriftOppsummering">Oppsummering</string>
     <string name="tilbakeTilMain">Tilbake til hovedmeny</string>
-    <string name="lang_de">Tysk</string>
+    <string name="oppsummeringInfo">Gratulerer! Du fikk %1$d riktig og %2$d feil.</string>
     <string name="infoSpraak">Velg språk</string>
+    <string name="statistikkTekstRiktig">Totalt antall riktige svar:</string>
+    <string name="statistikkTekstFeil">Totalt antall feil svar:</string>
+    <string name="statistikkRiktig"></string>
+    <string name="statistikkFeil">Oppsummering</string>
+    <string name="slettStatistikk">Slett statistikk</string>
     <string name="popupMelding">Vil du virkelig avslutte spillet?</string>
+    <string name="popupMeldingStatistikk">Vil du virkelig slette all statistikk?</string>
     <string name="popupPos">Ja</string>
     <string name="popupNeg">Nei</string>
     <string name="popupFerdig">Det er ingen flere tilgjengelige spørsmål</string>
-    <string name="popupOk">Ok</string>
+    <string name="popupOk">OK</string>
 </resources>
