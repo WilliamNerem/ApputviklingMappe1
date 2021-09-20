@@ -2,6 +2,7 @@ package com.example.apputviklingmappe1_s344106_s344082;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -48,7 +49,9 @@ public class SeStatistikk extends AppCompatActivity {
                                 totaltRiktig = 0;
                                 totaltFeil = 0;
                                 dialogInterface.cancel();
-                                recreate();
+                                Intent intent = getIntent();
+                                finish();
+                                startActivity(intent);
                             }
                         })
                         .setNegativeButton(SeStatistikk.this.getString(R.string.popupNeg), new DialogInterface.OnClickListener() {
