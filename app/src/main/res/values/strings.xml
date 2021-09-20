@@ -31,7 +31,9 @@
     <string name="oppsummeringInfo">Gratulerer! du fikk %1$d riktig og %2$d feil.</string>
     <string name="lang_de">Tysk</string>
     <string name="infoSpraak">Velg språk</string>
-    <string name="popupMelding">Vil du avslutte spillet?</string>
+    <string name="popupMelding">Vil du virkelig avslutte spillet?</string>
     <string name="popupPos">Ja</string>
     <string name="popupNeg">Nei</string>
+    <string name="popupFerdig">Det er ingen flere tilgjengelige spørsmål</string>
+    <string name="popupOk">Ok</string>
 </resources>

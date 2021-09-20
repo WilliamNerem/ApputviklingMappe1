@@ -180,7 +180,19 @@ public class StartSpill extends AppCompatActivity {
                 sjekkSvar();
                 regnestykkerArray = fjernFraArray(regnestykkerArray, indexInArray);
                 svarArray = fjernFraArray(svarArray, indexInArray);
-                if (Preferanser.currentPreferanse == antallRegnestykkerBesvart){
+                if(antallRegnestykkerBesvart == 15) {
+                    AlertDialog popup = new AlertDialog.Builder(StartSpill.this)
+                            .setMessage(StartSpill.this.getString(R.string.popupFerdig))
+                            .setPositiveButton(getBaseContext().getString(R.string.popupOk), new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    tilOppsummering();
+                                }
+                            })
+                            .show();
+                    return;
+                }
+                else if (Preferanser.currentPreferanse == antallRegnestykkerBesvart){
                     tilOppsummering();
                     return;
                 }
@@ -194,8 +206,6 @@ public class StartSpill extends AppCompatActivity {
 
     private void sjekkSvar(){
         int svar = Integer.parseInt(svarArray[indexInArray]);
-        System.out.println("svar: " + svar);
-        System.out.println("currentSvar: " + currentSvar);
 
         if (svar == currentSvar){
             oppdaterAntallRikitgOgFeil(tvAntallRiktig, "riktig");
@@ -205,7 +215,6 @@ public class StartSpill extends AppCompatActivity {
     }
 
     private void oppdaterAntallRikitgOgFeil(TextView tv, String check){
-        System.out.println(tv.getId());
         if (check.equals("riktig")){
             antallRiktig ++;
             String tekstRiktig = getString(R.string.antallRiktig, antallRiktig);
