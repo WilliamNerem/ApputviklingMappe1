@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">ApputviklingMappe1_s344106_s344082</string>
+    <string name="startspill">Start spill</string>
+    <string name="sestatistikk">Se statistikk</string>
+    <string name="preferanser">Se preferanser</string>
+    <string name="overskriftMain">Mattespill</string>
+    <string name="overskriftPreferanser">Preferanser</string>
+    <string name="infoPreferanser">Her kan du velge antall regnestykker du skal løse i spillet</string>
+    <string name="overskriftStartSpill">Regn ut følgende</string>
+    <string name="regnestykke"/>
+    <string name="antallRiktig">Antall riktig svar: %1$d</string>
+    <string name="antallFeil">Antall feil svar: %1$d</string>
+    <string name="button1">1</string>
+    <string name="button2">2</string>
+    <string name="button3">3</string>
+    <string name="button4">4</string>
+    <string name="button5">5</string>
+    <string name="button6">6</string>
+    <string name="button7">7</string>
+    <string name="button8">8</string>
+    <string name="button9">9</string>
+    <string name="button0">0</string>
+    <string name="button_sendsvar">Svar</string>
+    <string name="svar"/>
+    <string name="preferanse5">5</string>
+    <string name="preferanse10">10</string>
+    <string name="preferanse15">15</string>
+    <string name="currentPreferanse">Din nåværende preferanse er: %1$d</string>
+    <string name="overskriftOppsummering">Dette er oppsummering siden</string>
+    <string name="lang_de">Tysk</string>
+    <string name="infoSpraak">Velg språk</string>
+</resources>

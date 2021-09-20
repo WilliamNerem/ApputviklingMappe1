@@ -1,5 +1,6 @@
 package com.example.apputviklingmappe1_s344106_s344082;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
@@ -44,25 +45,14 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    /*private void settSpråk() {
-        final Button button_lang_de = (Button) findViewById(R.id.button_lang_de);
-                String languageToLoad = "";
-                if (Locale.getDefault().getLanguage().equals("de")) {
-                    languageToLoad = "no";
-                } else {
-                    languageToLoad = "de";
-                }
-                Locale locale = new Locale(languageToLoad);
-                Locale.setDefault(locale);
-                Configuration config = new Configuration();
-                config.locale = locale;
-                getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
-    }
-    private void RestartActivity(){
-        Intent intent = getIntent();
-        finish();
-        startActivity(intent);
+    public void onResume() {
+        super.onResume();
+
+        if(Preferanser.localHasChanged) {
+            recreate();
+            setContentView(R.layout.activity_main);
+            Preferanser.localHasChanged = false;
+        }
     }
 
-     */
 }

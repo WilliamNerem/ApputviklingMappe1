@@ -31,14 +31,16 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="20dp"
-                android:textSize="11sp" />
+                android:textSize="11sp"
+                android:maxWidth="130dp"/>
             <TextView
                 android:id="@+id/antallFeil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
                 android:textSize="11sp"
-                android:layout_alignParentEnd="true"/>
+                android:layout_alignParentEnd="true"
+                android:maxWidth="130dp"/>
         </RelativeLayout>
         <LinearLayout
             android:layout_width="match_parent"
