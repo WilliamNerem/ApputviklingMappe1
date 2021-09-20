@@ -1,6 +1,8 @@
 package com.example.apputviklingmappe1_s344106_s344082;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -270,5 +272,24 @@ public class StartSpill extends AppCompatActivity {
         antallRiktig = savedInstanceState.getInt("intAntallRiktig");
         regnestykkerArray = savedInstanceState.getStringArray("regnestykkerArray");
         svarArray = savedInstanceState.getStringArray("svarArray");
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog popup = new AlertDialog.Builder(this)
+                .setMessage(this.getString(R.string.popupMelding))
+                .setPositiveButton(this.getString(R.string.popupPos), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finish();
+                    }
+                })
+                .setNegativeButton(this.getString(R.string.popupNeg), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                })
+                .show();
     }
 }

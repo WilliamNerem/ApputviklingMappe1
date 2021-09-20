@@ -15,6 +15,7 @@ import java.util.Locale;
 
 public class Preferanser extends AppCompatActivity {
     static int currentPreferanse = 5;
+    static boolean localHasChanged = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,13 +89,8 @@ public class Preferanser extends AppCompatActivity {
             Configuration config = new Configuration();
             config.locale = locale;
             getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
-            RestartActivity();
+            recreate();
+            localHasChanged=true;
         }
-    }
-
-    private void RestartActivity(){
-        Intent intent = getIntent();
-        finish();
-        startActivity(intent);
     }
 }
