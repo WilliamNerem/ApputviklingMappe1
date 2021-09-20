@@ -8,10 +8,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
+
+    private TextView tvOverskrift;
+    private Button tvButtonStartSpill;
+    private Button tvButtonStatistikk;
+    private Button tvButtonPreferanser;
 
 
     @Override
@@ -19,11 +27,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final Button button_start = (Button) findViewById(R.id.button_start);
-        final Button button_statistikk = (Button) findViewById(R.id.button_statistikk);
-        final Button button_preferanser = (Button) findViewById(R.id.button_preferanser);
+        tvOverskrift = (TextView) findViewById(R.id.overskriftMain);
+        tvButtonStartSpill = (Button) findViewById(R.id.button_start);
+        tvButtonStatistikk = (Button) findViewById(R.id.button_statistikk);
+        tvButtonPreferanser = (Button) findViewById(R.id.button_preferanser);
+        knapper();
+    }
 
-        button_start.setOnClickListener(new View.OnClickListener() {
+    private void knapper(){
+        tvButtonStartSpill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, StartSpill.class));
@@ -31,13 +43,13 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        button_statistikk.setOnClickListener(new View.OnClickListener() {
+        tvButtonStatistikk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, SeStatistikk.class));
             }
         });
-        button_preferanser.setOnClickListener(new View.OnClickListener() {
+        tvButtonPreferanser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, Preferanser.class));
@@ -45,12 +57,31 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putString("Overskrift", tvOverskrift.getText().toString());
+        outState.putString("start", tvButtonStartSpill.getText().toString());
+        outState.putString("statistikk", tvButtonStatistikk.getText().toString());
+        outState.putString("preferanser", tvButtonPreferanser.getText().toString());
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        tvOverskrift.setText(savedInstanceState.getString("Overskrift"));
+        tvButtonStartSpill.setText(savedInstanceState.getString("start"));
+        tvButtonStatistikk.setText(savedInstanceState.getString("statistikk"));
+        tvButtonPreferanser.setText(savedInstanceState.getString("preferanser"));
+    }
+
     public void onResume() {
         super.onResume();
 
         if(Preferanser.localHasChanged) {
-            recreate();
-            setContentView(R.layout.activity_main);
+            Intent intent = getIntent();
+            finish();
+            startActivity(intent);
             Preferanser.localHasChanged = false;
         }
     }

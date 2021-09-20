@@ -16,12 +16,20 @@ import java.util.Locale;
 public class Preferanser extends AppCompatActivity {
     static int currentPreferanse = 5;
     static boolean localHasChanged = false;
+    private TextView tvOverskrift;
+    private TextView tvVelgSpraak;
+    private TextView tvPreferanserInfo;
+    private TextView tvCurrentPreferanse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.preferanser);
 
+        tvOverskrift = (TextView) findViewById(R.id.overskriftPreferanser);
+        tvVelgSpraak = (TextView) findViewById(R.id.velgSpraak);
+        tvPreferanserInfo = (TextView) findViewById(R.id.preferanserInfo);
+        tvCurrentPreferanse = (TextView) findViewById(R.id.current_preferanse);
         endrePreferanse();
         settSpråk();
     }
@@ -81,7 +89,7 @@ public class Preferanser extends AppCompatActivity {
              settSpråkendring("de");
           }
         });
-}
+    }
     public void settSpråkendring(String lang) {
         if (!lang.equals("")) {
             Locale locale = new Locale(lang);
@@ -89,8 +97,28 @@ public class Preferanser extends AppCompatActivity {
             Configuration config = new Configuration();
             config.locale = locale;
             getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
-            recreate();
+            Intent intent = getIntent();
+            finish();
+            startActivity(intent);
             localHasChanged=true;
         }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putString("Overskrift", tvOverskrift.getText().toString());
+        outState.putString("VelgSpraak", tvVelgSpraak.getText().toString());
+        outState.putString("PreferanserInfo", tvPreferanserInfo.getText().toString());
+        outState.putString("CurrentPreferanse", tvCurrentPreferanse.getText().toString());
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        tvOverskrift.setText(savedInstanceState.getString("Overskrift"));
+        tvVelgSpraak.setText(savedInstanceState.getString("VelgSpraak"));
+        tvPreferanserInfo.setText(savedInstanceState.getString("PreferanserInfo"));
+        tvCurrentPreferanse.setText(savedInstanceState.getString("CurrentPreferanse"));
     }
 }

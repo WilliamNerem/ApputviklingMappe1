@@ -14,6 +14,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/overskriftPreferanser"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/overskriftPreferanser"
@@ -23,10 +24,43 @@
             android:paddingVertical="5dp"
             android:background="@drawable/button_border"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="10dp"
             />
 
         <TextView
+            android:id="@+id/velgSpraak"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/infoSpraak"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:gravity="center_horizontal"
+            />
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+            <ImageButton
+                android:id="@+id/button_lang_no"
+                android:layout_width="65dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_no"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="10dp">
+            </ImageButton>
+            <ImageButton
+                android:id="@+id/button_lang_de"
+                android:layout_width="65dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_de"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
+            </ImageButton>
+        </TableRow>
+
+        <TextView
+            android:id="@+id/preferanserInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/infoPreferanser"
@@ -41,44 +75,42 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:gravity="center_horizontal|bottom">
 
-        <Button
-            android:id="@+id/button_preferanser_5"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:width="150dp"
-            android:background="@drawable/button_border"
-            android:text="@string/preferanse5" />
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp">
 
-        <Button
-            android:id="@+id/button_preferanser_10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_marginStart="30dp"
-            android:width="150dp"
-            android:background="@drawable/button_border"
-            android:text="@string/preferanse10" />
+            <Button
+                android:id="@+id/button_preferanser_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:width="150dp"
+                android:background="@drawable/button_border"
+                android:text="@string/preferanse5" />
 
-        <Button
-            android:id="@+id/button_preferanser_15"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_marginStart="30dp"
-            android:width="150dp"
-            android:background="@drawable/button_border"
-            android:text="@string/preferanse15" />
+            <Button
+                android:id="@+id/button_preferanser_10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:width="150dp"
+                android:background="@drawable/button_border"
+                android:text="@string/preferanse10" />
 
-    </LinearLayout>
+            <Button
+                android:id="@+id/button_preferanser_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:width="150dp"
+                android:background="@drawable/button_border"
+                android:text="@string/preferanse15" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="bottom">
+        </LinearLayout>
 
         <TextView
             android:id="@+id/current_preferanse"
