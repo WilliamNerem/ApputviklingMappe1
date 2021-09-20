@@ -29,4 +29,7 @@
     <string name="overskriftOppsummering">Dette er oppsummering siden</string>
     <string name="lang_de">Tysk</string>
     <string name="infoSpraak">Velg språk</string>
+    <string name="popupMelding">Vil du avslutte spillet?</string>
+    <string name="popupPos">Ja</string>
+    <string name="popupNeg">Nei</string>
 </resources>

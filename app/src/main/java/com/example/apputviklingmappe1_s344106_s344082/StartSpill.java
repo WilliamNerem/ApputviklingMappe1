@@ -277,14 +277,14 @@ public class StartSpill extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         AlertDialog popup = new AlertDialog.Builder(this)
-                .setMessage("Vil du avslutte spillet?")
-                .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
+                .setMessage(this.getString(R.string.popupMelding))
+                .setPositiveButton(this.getString(R.string.popupPos), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         finish();
                     }
                 })
-                .setNegativeButton("Nei", new DialogInterface.OnClickListener() {
+                .setNegativeButton(this.getString(R.string.popupNeg), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.cancel();
