@@ -33,6 +33,7 @@ public class StartSpill extends AppCompatActivity {
     private TextView tvAntallFeil;
     private TextView tvRegnestykke;
     private TextView tvSvar;
+    private TextView tvOverskrift;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,7 @@ public class StartSpill extends AppCompatActivity {
         tvAntallFeil = (TextView) findViewById(R.id.antallFeil);
         tvRegnestykke = (TextView) findViewById(R.id.regnestykke);
         tvSvar = (TextView) findViewById(R.id.svar);
+        tvOverskrift = (TextView) findViewById(R.id.overskriftStartSpill);
 
         Resources res = getResources();
         regnestykkerArray = res.getStringArray(R.array.regnestykker);
@@ -251,10 +253,13 @@ public class StartSpill extends AppCompatActivity {
 
     private void tilOppsummering(){
         startActivity(new Intent(StartSpill.this, Oppsummering.class));
+        finish();
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
+        System.out.println(tvOverskrift.getText().toString());
+        outState.putString("overskriftStartSpill", tvOverskrift.getText().toString());
         outState.putString("antallRiktig", tvAntallRiktig.getText().toString());
         outState.putString("antallFeil", tvAntallFeil.getText().toString());
         outState.putString("regnestykke", tvRegnestykke.getText().toString());
@@ -272,6 +277,8 @@ public class StartSpill extends AppCompatActivity {
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
+        System.out.println(tvOverskrift.getText().toString()+ "restore state");
+        tvOverskrift.setText(savedInstanceState.getString("overskriftStartSpill"));
         tvAntallRiktig.setText(savedInstanceState.getString("antallRiktig"));
         tvAntallFeil.setText(savedInstanceState.getString("antallFeil"));
         tvRegnestykke.setText(savedInstanceState.getString("regnestykke"));
