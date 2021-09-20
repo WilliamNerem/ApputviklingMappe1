@@ -5,8 +5,9 @@
     <string name="preferanser">Se preferanser</string>
     <string name="overskriftMain">Mattespill</string>
     <string name="overskriftPreferanser">Preferanser</string>
-    <string name="infoPreferanser">Her kan du velge antall regnestykker du skal løse i spillet</string>
     <string name="overskriftStartSpill">Regn ut følgende</string>
+    <string name="overskriftOppsummering">Oppsummering</string>
+    <string name="infoPreferanser">Her kan du velge antall regnestykker du skal løse i spillet</string>
     <string name="regnestykke"/>
     <string name="antallRiktig">Antall riktig svar: %1$d</string>
     <string name="antallFeil">Antall feil svar: %1$d</string>
@@ -26,7 +27,8 @@
     <string name="preferanse10">10</string>
     <string name="preferanse15">15</string>
     <string name="currentPreferanse">Din nåværende preferanse er: %1$d</string>
-    <string name="overskriftOppsummering">Dette er oppsummering siden</string>
+    <string name="oppsummeringInfo">Gratulerer! du fikk %1$d riktig og %2$d feil.</string>
+    <string name="tilbakeTilMain">Tilbake til hovedmeny</string>
     <string name="lang_de">Tysk</string>
     <string name="infoSpraak">Velg språk</string>
     <string name="popupMelding">Vil du avslutte spillet?</string>

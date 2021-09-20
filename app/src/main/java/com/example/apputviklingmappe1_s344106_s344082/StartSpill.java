@@ -25,8 +25,8 @@ public class StartSpill extends AppCompatActivity {
     String[] regnestykkerArray;
     String[] svarArray;
     int indexInArray;
-    int antallFeil;
-    int antallRiktig;
+    static int antallFeil;
+    static int antallRiktig;
     int currentSvar = -1;
     int antallRegnestykkerBesvart;
     private TextView tvAntallRiktig;
@@ -39,6 +39,8 @@ public class StartSpill extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_spill);
 
+        antallRiktig = 0;
+        antallFeil = 0;
         tvAntallRiktig = (TextView) findViewById(R.id.antallRiktig);
         tvAntallFeil = (TextView) findViewById(R.id.antallFeil);
         tvRegnestykke = (TextView) findViewById(R.id.regnestykke);

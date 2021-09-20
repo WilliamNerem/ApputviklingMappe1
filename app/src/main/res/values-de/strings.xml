@@ -26,7 +26,9 @@
     <string name="preferanse10">10</string>
     <string name="preferanse15">15</string>
     <string name="currentPreferanse">Ihre aktuelle Präferenz ist: %1$d</string>
-    <string name="overskriftOppsummering">Dies ist die Übersichtsseite</string>
+    <string name="overskriftOppsummering">Zusammenfassung</string>
+    <string name="oppsummeringInfo">Herzliche Glückwünsche! Sie haben %1$d richtig und %2$d falsch.</string>
+    <string name="tilbakeTilMain">Zurück zum Hauptmenü</string>
     <string name="lang_de">Deutsch</string>
     <string name="infoSpraak">Sprache auswählen</string>
     <string name="popupMelding">Möchten Sie das Spiel beenden?</string>
