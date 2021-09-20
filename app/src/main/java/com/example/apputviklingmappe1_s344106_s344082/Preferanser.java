@@ -26,12 +26,16 @@ public class Preferanser extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.preferanser);
 
+        System.out.println(Variabler.currentLocale);
         tvOverskrift = (TextView) findViewById(R.id.overskriftPreferanser);
         tvVelgSpraak = (TextView) findViewById(R.id.velgSpraak);
         tvPreferanserInfo = (TextView) findViewById(R.id.preferanserInfo);
         tvCurrentPreferanse = (TextView) findViewById(R.id.current_preferanse);
         endrePreferanse();
         settSpråk();
+        if (Variabler.initPreferanser){
+            settSpråkendring(Variabler.currentLocale);
+        }
     }
 
     public void endrePreferanse(){
@@ -74,12 +78,12 @@ public class Preferanser extends AppCompatActivity {
     public void settSpråk() {
         final ImageButton button_lang_no = (ImageButton) findViewById(R.id.button_lang_no);
         final ImageButton button_lang_de = (ImageButton) findViewById(R.id.button_lang_de);
-        settSpråkendring("");
 
         button_lang_no.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
               settSpråkendring("no");
+              Variabler.currentLocale = "no";
           }
       });
 
@@ -87,21 +91,22 @@ public class Preferanser extends AppCompatActivity {
          @Override
          public void onClick(View v) {
              settSpråkendring("de");
+             Variabler.currentLocale = "de";
           }
         });
     }
     public void settSpråkendring(String lang) {
-        if (!lang.equals("")) {
-            Locale locale = new Locale(lang);
-            Locale.setDefault(locale);
-            Configuration config = new Configuration();
-            config.locale = locale;
-            getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
-            Intent intent = getIntent();
-            finish();
-            startActivity(intent);
-            localHasChanged=true;
-        }
+
+        Variabler.initPreferanser = false;
+        Locale locale = new Locale(lang);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
+        localHasChanged=true;
     }
 
     @Override
@@ -110,6 +115,7 @@ public class Preferanser extends AppCompatActivity {
         outState.putString("VelgSpraak", tvVelgSpraak.getText().toString());
         outState.putString("PreferanserInfo", tvPreferanserInfo.getText().toString());
         outState.putString("CurrentPreferanse", tvCurrentPreferanse.getText().toString());
+        outState.putString("CurrentLocale", Variabler.currentLocale);
         super.onSaveInstanceState(outState);
     }
 
@@ -120,5 +126,6 @@ public class Preferanser extends AppCompatActivity {
         tvVelgSpraak.setText(savedInstanceState.getString("VelgSpraak"));
         tvPreferanserInfo.setText(savedInstanceState.getString("PreferanserInfo"));
         tvCurrentPreferanse.setText(savedInstanceState.getString("CurrentPreferanse"));
+        Variabler.currentLocale = savedInstanceState.getString("CurrentLocale");
     }
 }
