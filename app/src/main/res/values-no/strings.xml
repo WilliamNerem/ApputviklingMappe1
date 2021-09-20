@@ -5,9 +5,9 @@
     <string name="preferanser">Se preferanser</string>
     <string name="overskriftMain">Mattespill</string>
     <string name="overskriftPreferanser">Preferanser</string>
+    <string name="infoPreferanser">Velg antall regnestykker du skal løse i spillet</string>
     <string name="overskriftStartSpill">Regn ut følgende</string>
     <string name="overskriftOppsummering">Oppsummering</string>
-    <string name="infoPreferanser">Her kan du velge antall regnestykker du skal løse i spillet</string>
     <string name="regnestykke"/>
     <string name="antallRiktig">Antall riktig svar: %1$d</string>
     <string name="antallFeil">Antall feil svar: %1$d</string>

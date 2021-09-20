@@ -5,7 +5,7 @@
     <string name="preferanser">Siehe Einstellungen</string>
     <string name="overskriftMain">Mathe-Spiele</string>
     <string name="overskriftPreferanser">Einstellungen</string>
-    <string name="infoPreferanser">Hier kannst du wählen, wie viele Berechnungen du im Spiel lösen musst</string>
+    <string name="infoPreferanser">Wählen Sie die Anzahl der Rätsel aus, die Sie im Spiel lösen</string>
     <string name="overskriftStartSpill">Berechnen Sie Folgendes</string>
     <string name="regnestykke"/>
     <string name="antallRiktig">Anzahl richtiger Antworten: %1$d</string>
