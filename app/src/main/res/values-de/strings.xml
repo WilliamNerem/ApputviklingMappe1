@@ -29,7 +29,9 @@
     <string name="overskriftOppsummering">Dies ist die Übersichtsseite</string>
     <string name="lang_de">Deutsch</string>
     <string name="infoSpraak">Sprache auswählen</string>
-    <string name="popupMelding">Möchten Sie das Spiel beenden?</string>
+    <string name="popupMelding">Willst du das Spiel wirklich beenden?</string>
     <string name="popupPos">Jawohl</string>
     <string name="popupNeg">Nein</string>
+    <string name="popupFerdig">Es gibt manchmal mehrere Fragen</string>
+    <string name="popupOk">Ok</string>
 </resources>
