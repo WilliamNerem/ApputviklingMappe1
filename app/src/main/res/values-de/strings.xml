@@ -6,6 +6,7 @@
     <string name="overskriftMain">Mathe-Spiele</string>
     <string name="overskriftPreferanser">Einstellungen</string>
     <string name="infoPreferanser">Wählen Sie die Anzahl der Rätsel aus, die Sie im Spiel lösen</string>
+    <string name="overskriftStatistikk">Statistiken</string>
     <string name="overskriftStartSpill">Berechnen Sie Folgendes</string>
     <string name="regnestykke"/>
     <string name="antallRiktig">Anzahl richtiger Antworten: %1$d</string>
@@ -26,14 +27,19 @@
     <string name="preferanse10">10</string>
     <string name="preferanse15">15</string>
     <string name="currentPreferanse">Ihre aktuelle Präferenz ist: %1$d</string>
-    <string name="overskriftOppsummering">Zusammenfassung</string>
+    <string name="overskriftOppsummering">Summarisch</string>
     <string name="oppsummeringInfo">Herzliche Glückwünsche! Sie haben %1$d richtig und %2$d falsch.</string>
     <string name="tilbakeTilMain">Zurück zum Hauptmenü</string>
-    <string name="lang_de">Deutsch</string>
     <string name="infoSpraak">Sprache auswählen</string>
+    <string name="statistikkTekstRiktig">Gesamtzahl richtiger Antworten:</string>
+    <string name="statistikkTekstFeil">Gesamtzahl der falschen Antworten:</string>
+    <string name="statistikkRiktig"/>
+    <string name="statistikkFeil"/>
+    <string name="slettStatistikk">Statistiken löschen</string>
     <string name="popupMelding">Willst du das Spiel wirklich beenden?</string>
+    <string name="popupMeldingStatistikk">Möchten Sie wirklich alle Statistiken löschen?</string>
     <string name="popupPos">Jawohl</string>
     <string name="popupNeg">Nein</string>
     <string name="popupFerdig">Es gibt manchmal mehrere Fragen</string>
-    <string name="popupOk">Ok</string>
+    <string name="popupOk">OK</string>
 </resources>

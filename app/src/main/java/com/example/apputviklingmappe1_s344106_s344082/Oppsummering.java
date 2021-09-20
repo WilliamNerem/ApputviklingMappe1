@@ -24,6 +24,8 @@ public class Oppsummering extends AppCompatActivity {
     private void renderInfo(){
         int antallRiktig = StartSpill.antallRiktig;
         int antallFeil = StartSpill.antallFeil;
+        SeStatistikk.totaltRiktig += antallRiktig;
+        SeStatistikk.totaltFeil += antallFeil;
         String infoTekst = getString(R.string.oppsummeringInfo, antallRiktig, antallFeil);
         oppsummeringInfo.setText(infoTekst);
     }
