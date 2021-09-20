@@ -34,13 +34,8 @@ public class Oppsummering extends AppCompatActivity {
         tilbakeTilMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Oppsummering.this, MainActivity.class));
+                onBackPressed();
             }
         });
-    }
-
-    @Override
-    public void onBackPressed() {
-        startActivity(new Intent(Oppsummering.this, MainActivity.class));
     }
 }
