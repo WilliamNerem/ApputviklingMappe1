@@ -292,6 +292,7 @@ public class StartSpill extends AppCompatActivity {
         antallRiktig = savedInstanceState.getInt("intAntallRiktig");
         regnestykkerArray = savedInstanceState.getStringArray("regnestykkerArray");
         svarArray = savedInstanceState.getStringArray("svarArray");
+
     }
 
     @Override

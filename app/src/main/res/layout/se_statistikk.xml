@@ -72,7 +72,7 @@
             android:textSize="40sp"
             android:gravity="center_horizontal"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginStart="140dp"
+            android:layout_marginStart="135dp"
             />
         </TableRow>
     </LinearLayout>
