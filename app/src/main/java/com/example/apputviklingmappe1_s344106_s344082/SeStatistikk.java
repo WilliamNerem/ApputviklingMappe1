@@ -13,26 +13,45 @@ import android.widget.TextView;
 public class SeStatistikk extends AppCompatActivity {
     static int totaltRiktig;
     static int totaltFeil;
-    private TextView statistikkRiktig;
-    private TextView statistikkFeil;
+    private TextView tvStatistikkRiktig;
+    private TextView tvStatistikkFeil;
+    private TextView tvStatistikkTekstRiktig;
+    private TextView tvStatistikkTekstFeil;
+    private TextView tvOverskrift;
+    private TextView tvSlettStatistikk;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.se_statistikk);
-        statistikkRiktig = (TextView) findViewById(R.id.statistikkRiktig);
-        statistikkFeil = (TextView ) findViewById(R.id.statistikkFeil);
+        tvStatistikkRiktig = (TextView) findViewById(R.id.statistikkRiktig);
+        tvStatistikkFeil = (TextView ) findViewById(R.id.statistikkFeil);
+        tvOverskrift = (TextView ) findViewById(R.id.overskriftStatistikk);
+        tvSlettStatistikk = (TextView ) findViewById(R.id.slettStatistikk);
+        tvStatistikkTekstRiktig = (TextView ) findViewById(R.id.statistikkTekstRiktig);
+        tvStatistikkTekstFeil = (TextView ) findViewById(R.id.statistikkTekstFeil);
         renderStatistikk();
         resetStatistikk();
+
+        if (Variabler.init){
+            Variabler.init = false;
+            reRender();
+        }
+    }
+
+    public void reRender(){
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
     }
 
     private void renderStatistikk() {
         String txtStatistikkRiktig = Integer.toString(totaltRiktig);
         String txtStatistikkFeil = Integer.toString(totaltFeil);
-        statistikkRiktig.setText(txtStatistikkRiktig);
-        statistikkRiktig.setTextColor(Color.GREEN);
-        statistikkFeil.setText(txtStatistikkFeil);
-        statistikkFeil.setTextColor(Color.RED);
+        tvStatistikkRiktig.setText(txtStatistikkRiktig);
+        tvStatistikkRiktig.setTextColor(Color.GREEN);
+        tvStatistikkFeil.setText(txtStatistikkFeil);
+        tvStatistikkFeil.setTextColor(Color.RED);
     }
 
     private void resetStatistikk() {
@@ -67,11 +86,23 @@ public class SeStatistikk extends AppCompatActivity {
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-    super.onSaveInstanceState(outState);
+        outState.putString("Overskrift", tvOverskrift.getText().toString());
+        outState.putString("statistikkRiktig", tvStatistikkRiktig.getText().toString());
+        outState.putString("statistikkFeil", tvStatistikkFeil.getText().toString());
+        outState.putString("slettStatistikk", tvSlettStatistikk.getText().toString());
+        outState.putString("statistikkTekstRiktig", tvStatistikkTekstRiktig.getText().toString());
+        outState.putString("statistikkTekstFeil", tvStatistikkTekstFeil.getText().toString());
+        super.onSaveInstanceState(outState);
 }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
+        tvOverskrift.setText(savedInstanceState.getString("Overskrift"));
+        tvStatistikkRiktig.setText(savedInstanceState.getString("statistikkRiktig"));
+        tvStatistikkFeil.setText(savedInstanceState.getString("statistikkFeil"));
+        tvSlettStatistikk.setText(savedInstanceState.getString("slettStatistikk"));
+        tvStatistikkTekstRiktig.setText(savedInstanceState.getString("statistikkTekstRiktig"));
+        tvStatistikkTekstFeil.setText(savedInstanceState.getString("statistikkTekstFeil"));
     }
 }
