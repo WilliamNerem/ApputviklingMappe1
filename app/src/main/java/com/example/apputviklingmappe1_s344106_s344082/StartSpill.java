@@ -146,8 +146,10 @@ public class StartSpill extends AppCompatActivity {
         } else {
             currentSvar = currentSvar * 10 + i;
         }
-        String strSvar = Integer.toString(currentSvar);
-        tvSvar.setText(strSvar);
+        if(currentSvar < 1000 && currentSvar > -1) {
+            String strSvar = Integer.toString(currentSvar);
+            tvSvar.setText(strSvar);
+        }
     }
 
     private void slettSiste(){
