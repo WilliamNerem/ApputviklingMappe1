@@ -184,7 +184,10 @@ public class StartSpill extends AppCompatActivity {
         svar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 antallRegnestykkerBesvart++;
-                sjekkSvar();
+                String sjekk = sjekkSvar();
+                if (sjekk.equals("alleSpmBesvart")){
+                    return;
+                }
                 regnestykkerArray = fjernFraArray(regnestykkerArray, indexInArray);
                 svarArray = fjernFraArray(svarArray, indexInArray);
                 if (antallRegnestykkerBesvart == 15){
@@ -214,10 +217,10 @@ public class StartSpill extends AppCompatActivity {
             .show();
     }
 
-    private void sjekkSvar(){
+    private String sjekkSvar(){
         if (antallRegnestykkerBesvart == 16){
             alleSpmBesvart();
-            return;
+            return "alleSpmBesvart";
         }
         int svar = Integer.parseInt(svarArray[indexInArray]);
 
@@ -226,6 +229,7 @@ public class StartSpill extends AppCompatActivity {
         } else {
             oppdaterAntallRikitgOgFeil(tvAntallFeil, "feil");
         }
+        return "";
     }
 
     private void oppdaterAntallRikitgOgFeil(TextView tv, String check){

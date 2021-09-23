@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+
 public class SeStatistikk extends AppCompatActivity {
     static int antallRiktig;
     static int antallFeil;
@@ -64,12 +66,9 @@ public class SeStatistikk extends AppCompatActivity {
         String prosentStr;
         float prosent;
         if ((totaltFeil + totaltRiktig) != 0) {
-            System.out.println("kommer hit");
-            System.out.println(totaltRiktig);
-            System.out.println(totaltFeil);
             prosent = (totaltRiktig * 100.0f) / (totaltRiktig + totaltFeil);
-            prosentStr = String.valueOf(prosent) + "%";
-            System.out.println(prosentStr);
+            DecimalFormat df = new DecimalFormat("#.#");
+            prosentStr = String.valueOf(df.format(prosent)) + "%";
         } else {
             prosentStr = "0%";
         }
