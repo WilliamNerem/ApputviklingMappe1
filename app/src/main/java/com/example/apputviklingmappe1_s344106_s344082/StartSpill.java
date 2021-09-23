@@ -205,39 +205,37 @@ public class StartSpill extends AppCompatActivity {
             public void onClick(View v) {
                 antallRegnestykkerBesvart++;
                 sjekkSvar();
-                alleSpmBesvart();
+                if (antallRegnestykkerBesvart == 15){
+                    alleSpmBesvart();
+                    return;
+                } else if (Preferanser.currentPreferanse == antallRegnestykkerBesvart){
+                    tilOppsummering();
+                    return;
+                }
+                String setTekst = getString(R.string.svar);
+                tvSvar.setText(setTekst);
+                currentSvar = -1;
+                hentRegnestykke();
             }
         });
     }
 
     private void alleSpmBesvart(){
-        regnestykkerArray = fjernFraArray(regnestykkerArray, indexInArray);
-        svarArray = fjernFraArray(svarArray, indexInArray);
-        if(antallRegnestykkerBesvart == 15) {
-            AlertDialog popup = new AlertDialog.Builder(StartSpill.this)
-                    .setMessage(continuePopupMelding)
-                    .setPositiveButton(popupOk, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            tilOppsummering();
-                        }
-                    })
-                    .show();
-            return;
-        }
-        else if (Preferanser.currentPreferanse == antallRegnestykkerBesvart){
-            tilOppsummering();
-            return;
-        }
-        String setTekst = getString(R.string.svar);
-        tvSvar.setText(setTekst);
-        currentSvar = -1;
-        hentRegnestykke();
+        AlertDialog popup = new AlertDialog.Builder(StartSpill.this)
+            .setMessage(continuePopupMelding)
+            .setPositiveButton(popupOk, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    tilOppsummering();
+                }
+            })
+            .show();
     }
 
     private void sjekkSvar(){
-        if (regnestykkerArray.length == 0){
+        if (antallRegnestykkerBesvart == 16){
             alleSpmBesvart();
+            return;
         }
         int svar = Integer.parseInt(svarArray[indexInArray]);
 
