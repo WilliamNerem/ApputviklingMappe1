@@ -15,12 +15,16 @@ import android.widget.TextView;
 public class SeStatistikk extends AppCompatActivity {
     static int antallRiktig;
     static int antallFeil;
+    private int totaltRiktig;
+    private int totaltFeil;
     private TextView tvStatistikkRiktig;
     private TextView tvStatistikkFeil;
     private TextView tvStatistikkTekstRiktig;
     private TextView tvStatistikkTekstFeil;
     private TextView tvOverskrift;
     private TextView tvSlettStatistikk;
+    private TextView tvSvarProsent;
+    private TextView tvSvarProsentTekst;
     private String popupMelding;
     private String popupJa;
     private String popupNei;
@@ -38,13 +42,15 @@ public class SeStatistikk extends AppCompatActivity {
         tvSlettStatistikk = (TextView ) findViewById(R.id.slettStatistikk);
         tvStatistikkTekstRiktig = (TextView ) findViewById(R.id.statistikkTekstRiktig);
         tvStatistikkTekstFeil = (TextView ) findViewById(R.id.statistikkTekstFeil);
+        tvSvarProsent = (TextView ) findViewById(R.id.svarProsent);
+        tvSvarProsentTekst = (TextView ) findViewById(R.id.svarProsentTekst);
         popupMelding = SeStatistikk.this.getString(R.string.popupMeldingStatistikk);
         popupJa = SeStatistikk.this.getString(R.string.popupPos);
         popupNei = SeStatistikk.this.getString(R.string.popupNeg);
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
         editor = preferences.edit();
-        int totaltRiktig = antallRiktig + preferences.getInt("totaltRiktig", 0);
-        int totaltFeil = antallFeil + preferences.getInt("totaltFeil", 0);
+        totaltRiktig = antallRiktig + preferences.getInt("totaltRiktig", 0);
+        totaltFeil = antallFeil + preferences.getInt("totaltFeil", 0);
         editor.putInt("totaltRiktig", totaltRiktig);
         editor.putInt("totaltFeil", totaltFeil);
         editor.commit();
@@ -55,10 +61,23 @@ public class SeStatistikk extends AppCompatActivity {
     private void renderStatistikk() {
         String txtStatistikkRiktig = Integer.toString(preferences.getInt("totaltRiktig", 0));
         String txtStatistikkFeil = Integer.toString(preferences.getInt("totaltFeil", 0));
+        String prosentStr;
+        float prosent;
+        if ((totaltFeil + totaltRiktig) != 0) {
+            System.out.println("kommer hit");
+            System.out.println(totaltRiktig);
+            System.out.println(totaltFeil);
+            prosent = (totaltRiktig * 100.0f) / (totaltRiktig + totaltFeil);
+            prosentStr = String.valueOf(prosent) + "%";
+            System.out.println(prosentStr);
+        } else {
+            prosentStr = "0%";
+        }
         tvStatistikkRiktig.setText(txtStatistikkRiktig);
         tvStatistikkRiktig.setTextColor(Color.GREEN);
         tvStatistikkFeil.setText(txtStatistikkFeil);
         tvStatistikkFeil.setTextColor(Color.RED);
+        tvSvarProsent.setText(prosentStr);
     }
 
     private void resetStatistikk() {
@@ -102,6 +121,8 @@ public class SeStatistikk extends AppCompatActivity {
         outState.putString("slettStatistikk", tvSlettStatistikk.getText().toString());
         outState.putString("statistikkTekstRiktig", tvStatistikkTekstRiktig.getText().toString());
         outState.putString("statistikkTekstFeil", tvStatistikkTekstFeil.getText().toString());
+        outState.putString("tvSvarProsent", tvSvarProsent.getText().toString());
+        outState.putString("tvSvarProsentTekst", tvSvarProsentTekst.getText().toString());
         outState.putString("popupMelding", popupMelding);
         outState.putString("popupJa", popupJa);
         outState.putString("popupNei", popupNei);
@@ -117,6 +138,8 @@ public class SeStatistikk extends AppCompatActivity {
         tvSlettStatistikk.setText(savedInstanceState.getString("slettStatistikk"));
         tvStatistikkTekstRiktig.setText(savedInstanceState.getString("statistikkTekstRiktig"));
         tvStatistikkTekstFeil.setText(savedInstanceState.getString("statistikkTekstFeil"));
+        tvSvarProsent.setText(savedInstanceState.getString("tvSvarProsent"));
+        tvSvarProsentTekst.setText(savedInstanceState.getString("tvSvarProsentTekst"));
         popupMelding = savedInstanceState.getString("popupMelding", popupMelding);
         popupJa = savedInstanceState.getString("popupJa", popupJa);
         popupNei = savedInstanceState.getString("popupNei", popupNei);

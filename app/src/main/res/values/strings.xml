@@ -42,4 +42,6 @@
     <string name="popupNeg">Nei</string>
     <string name="popupFerdig">Det er ingen flere tilgjengelige spørsmål</string>
     <string name="popupOk">OK</string>
+    <string name="svarProsentTekst">Prosent riktig: </string>
+    <string name="svarProsent"/>
 </resources>
