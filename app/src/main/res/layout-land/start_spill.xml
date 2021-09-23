@@ -51,7 +51,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
                     android:text="@string/regnestykke"
-                    android:textSize="35sp">
+                    android:textSize="32sp">
                 </TextView>
                 <TextView
                     android:id="@+id/svar"
@@ -60,7 +60,7 @@
                     android:gravity="start"
                     android:text="@string/svar"
                     android:maxLength="3"
-                    android:textSize="35sp">
+                    android:textSize="32sp">
                 </TextView>
 
             </LinearLayout>
