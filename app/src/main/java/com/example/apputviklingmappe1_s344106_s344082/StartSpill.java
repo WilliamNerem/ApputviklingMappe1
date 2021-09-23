@@ -232,6 +232,8 @@ public class StartSpill extends AppCompatActivity {
     }
 
     private void sjekkSvar(){
+
+
         int svar = Integer.parseInt(svarArray[indexInArray]);
 
         if (svar == currentSvar){
