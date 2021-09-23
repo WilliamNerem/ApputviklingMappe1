@@ -9,16 +9,31 @@ import android.widget.TextView;
 
 public class Oppsummering extends AppCompatActivity {
 
-    private TextView oppsummeringInfo;
+    private TextView tvOppsummeringInfo;
+    private TextView tvOverskrift;
+    private TextView tvTilbakeTilMain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.oppsummering);
 
-        oppsummeringInfo = (TextView) findViewById(R.id.oppsummeringInfo);
+        tvOppsummeringInfo = (TextView) findViewById(R.id.oppsummeringInfo);
+        tvOverskrift = (TextView) findViewById(R.id.overskriftOppsummering);
+        tvTilbakeTilMain = (TextView) findViewById(R.id.button_tilbake_til_main);
         renderInfo();
         tilbakeTilMain();
+
+        if (Variabler.init){
+            Variabler.init = false;
+            reRender();
+        }
+    }
+
+    public void reRender(){
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
     }
 
     private void renderInfo(){
@@ -27,7 +42,7 @@ public class Oppsummering extends AppCompatActivity {
         SeStatistikk.totaltRiktig += antallRiktig;
         SeStatistikk.totaltFeil += antallFeil;
         String infoTekst = getString(R.string.oppsummeringInfo, antallRiktig, antallFeil);
-        oppsummeringInfo.setText(infoTekst);
+        tvOppsummeringInfo.setText(infoTekst);
     }
 
     private void tilbakeTilMain(){
@@ -39,5 +54,21 @@ public class Oppsummering extends AppCompatActivity {
                 onBackPressed();
             }
         });
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putString("Overskrift", tvOverskrift.getText().toString());
+        outState.putString("OppsummeringInfo", tvOppsummeringInfo.getText().toString());
+        outState.putString("TilbakeTilMain", tvTilbakeTilMain.getText().toString());
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        tvOverskrift.setText(savedInstanceState.getString("Overskrift"));
+        tvOppsummeringInfo.setText(savedInstanceState.getString("OppsummeringInfo"));
+        tvTilbakeTilMain.setText(savedInstanceState.getString("TilbakeTilMain"));
     }
 }

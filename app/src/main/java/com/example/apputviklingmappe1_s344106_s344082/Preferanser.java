@@ -2,8 +2,10 @@ package com.example.apputviklingmappe1_s344106_s344082;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +16,9 @@ import android.widget.TextView;
 import java.util.Locale;
 
 public class Preferanser extends AppCompatActivity {
+    private SharedPreferences currentLocale;
+    private SharedPreferences.Editor editLocale;
+
     static int currentPreferanse = 5;
     static boolean localHasChanged = false;
     private TextView tvOverskrift;
@@ -26,16 +31,26 @@ public class Preferanser extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.preferanser);
 
-        System.out.println(Variabler.currentLocale);
+        currentLocale = PreferenceManager.getDefaultSharedPreferences(this);
+        editLocale = currentLocale.edit();
+
+        ChangeLocale.setLocale(Preferanser.this, currentLocale.getString("locale", ""));
         tvOverskrift = (TextView) findViewById(R.id.overskriftPreferanser);
         tvVelgSpraak = (TextView) findViewById(R.id.velgSpraak);
         tvPreferanserInfo = (TextView) findViewById(R.id.preferanserInfo);
         tvCurrentPreferanse = (TextView) findViewById(R.id.current_preferanse);
         endrePreferanse();
         settSpråk();
-        if (Variabler.initPreferanser){
-            settSpråkendring(Variabler.currentLocale);
+        if (Variabler.init){
+            Variabler.init = false;
+            reRender();
         }
+    }
+
+    public void reRender(){
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
     }
 
     public void endrePreferanse(){
@@ -82,31 +97,26 @@ public class Preferanser extends AppCompatActivity {
         button_lang_no.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-              settSpråkendring("no");
-              Variabler.currentLocale = "no";
+              ChangeLocale.setLocale(Preferanser.this, "");
+              editLocale.putString("locale", "");
+              editLocale.commit();
+              Intent intent = getIntent();
+              finish();
+              startActivity(intent);
           }
       });
 
         button_lang_de.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View v) {
-             settSpråkendring("de");
-             Variabler.currentLocale = "de";
+             ChangeLocale.setLocale(Preferanser.this, "de");
+             editLocale.putString("locale", "de");
+             editLocale.commit();
+             Intent intent = getIntent();
+             finish();
+             startActivity(intent);
           }
         });
-    }
-    public void settSpråkendring(String lang) {
-
-        Variabler.initPreferanser = false;
-        Locale locale = new Locale(lang);
-        Locale.setDefault(locale);
-        Configuration config = new Configuration();
-        config.locale = locale;
-        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
-        Intent intent = getIntent();
-        finish();
-        startActivity(intent);
-        localHasChanged=true;
     }
 
     @Override
@@ -115,7 +125,6 @@ public class Preferanser extends AppCompatActivity {
         outState.putString("VelgSpraak", tvVelgSpraak.getText().toString());
         outState.putString("PreferanserInfo", tvPreferanserInfo.getText().toString());
         outState.putString("CurrentPreferanse", tvCurrentPreferanse.getText().toString());
-        outState.putString("CurrentLocale", Variabler.currentLocale);
         super.onSaveInstanceState(outState);
     }
 
@@ -126,6 +135,12 @@ public class Preferanser extends AppCompatActivity {
         tvVelgSpraak.setText(savedInstanceState.getString("VelgSpraak"));
         tvPreferanserInfo.setText(savedInstanceState.getString("PreferanserInfo"));
         tvCurrentPreferanse.setText(savedInstanceState.getString("CurrentPreferanse"));
-        Variabler.currentLocale = savedInstanceState.getString("CurrentLocale");
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        Variabler.init = true;
+        super.onBackPressed();
     }
 }

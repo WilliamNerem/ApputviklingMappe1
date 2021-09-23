@@ -2,7 +2,9 @@ package com.example.apputviklingmappe1_s344106_s344082;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        ChangeLocale.setLocale(MainActivity.this, ChangeLocale.getLanguage(MainActivity.this));
         tvOverskrift = (TextView) findViewById(R.id.overskriftMain);
         tvButtonStartSpill = (Button) findViewById(R.id.button_start);
         tvButtonStatistikk = (Button) findViewById(R.id.button_statistikk);
@@ -34,10 +37,17 @@ public class MainActivity extends AppCompatActivity {
         knapper();
     }
 
+    public void reRender(){
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
+    }
+
     private void knapper(){
         tvButtonStartSpill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Variabler.init = true;
                 startActivity(new Intent(MainActivity.this, StartSpill.class));
             }
 
@@ -46,13 +56,14 @@ public class MainActivity extends AppCompatActivity {
         tvButtonStatistikk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Variabler.init = true;
                 startActivity(new Intent(MainActivity.this, SeStatistikk.class));
             }
         });
         tvButtonPreferanser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Variabler.initPreferanser = true;
+                Variabler.init = true;
                 startActivity(new Intent(MainActivity.this, Preferanser.class));
             }
         });
@@ -64,7 +75,6 @@ public class MainActivity extends AppCompatActivity {
         outState.putString("start", tvButtonStartSpill.getText().toString());
         outState.putString("statistikk", tvButtonStatistikk.getText().toString());
         outState.putString("preferanser", tvButtonPreferanser.getText().toString());
-        outState.putString("CurrentLocale", Variabler.currentLocale);
         super.onSaveInstanceState(outState);
     }
 
@@ -75,17 +85,14 @@ public class MainActivity extends AppCompatActivity {
         tvButtonStartSpill.setText(savedInstanceState.getString("start"));
         tvButtonStatistikk.setText(savedInstanceState.getString("statistikk"));
         tvButtonPreferanser.setText(savedInstanceState.getString("preferanser"));
-        Variabler.currentLocale = savedInstanceState.getString("CurrentLocale");
     }
 
     public void onResume() {
         super.onResume();
 
-        if(Preferanser.localHasChanged) {
-            Intent intent = getIntent();
-            finish();
-            startActivity(intent);
-            Preferanser.localHasChanged = false;
+        if (Variabler.init){
+            Variabler.init = false;
+            reRender();
         }
     }
 

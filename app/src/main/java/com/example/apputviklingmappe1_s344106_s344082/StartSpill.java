@@ -58,6 +58,17 @@ public class StartSpill extends AppCompatActivity {
         sendSvar();
         hentRegnestykke();
         renderRiktigOgFeil();
+
+        if (Variabler.init){
+            Variabler.init = false;
+            reRender();
+        }
+    }
+
+    public void reRender(){
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
     }
 
     private void renderRiktigOgFeil(){
@@ -256,6 +267,7 @@ public class StartSpill extends AppCompatActivity {
     }
 
     private void tilOppsummering(){
+        Variabler.init = true;
         startActivity(new Intent(StartSpill.this, Oppsummering.class));
         finish();
     }
