@@ -64,8 +64,8 @@ public class Oppsummering extends AppCompatActivity {
     @Override
     public void onBackPressed()
     {
-        SeStatistikk.totaltRiktig += antallRiktig;
-        SeStatistikk.totaltFeil += antallFeil;
+        SeStatistikk.antallRiktig = antallRiktig;
+        SeStatistikk.antallFeil = antallFeil;
         super.onBackPressed();
     }
 }

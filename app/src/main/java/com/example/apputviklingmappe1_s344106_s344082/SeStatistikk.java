@@ -3,7 +3,9 @@ package com.example.apputviklingmappe1_s344106_s344082;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,8 +13,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class SeStatistikk extends AppCompatActivity {
-    static int totaltRiktig;
-    static int totaltFeil;
+    static int antallRiktig;
+    static int antallFeil;
     private TextView tvStatistikkRiktig;
     private TextView tvStatistikkFeil;
     private TextView tvStatistikkTekstRiktig;
@@ -22,6 +24,9 @@ public class SeStatistikk extends AppCompatActivity {
     private String popupMelding;
     private String popupJa;
     private String popupNei;
+
+    static SharedPreferences preferences;
+    static SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,13 +41,20 @@ public class SeStatistikk extends AppCompatActivity {
         popupMelding = SeStatistikk.this.getString(R.string.popupMeldingStatistikk);
         popupJa = SeStatistikk.this.getString(R.string.popupPos);
         popupNei = SeStatistikk.this.getString(R.string.popupNeg);
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        editor = preferences.edit();
+        int totaltRiktig = antallRiktig + preferences.getInt("totaltRiktig", 0);
+        int totaltFeil = antallFeil + preferences.getInt("totaltFeil", 0);
+        editor.putInt("totaltRiktig", totaltRiktig);
+        editor.putInt("totaltFeil", totaltFeil);
+        editor.commit();
         renderStatistikk();
         resetStatistikk();
     }
 
     private void renderStatistikk() {
-        String txtStatistikkRiktig = Integer.toString(totaltRiktig);
-        String txtStatistikkFeil = Integer.toString(totaltFeil);
+        String txtStatistikkRiktig = Integer.toString(preferences.getInt("totaltRiktig", 0));
+        String txtStatistikkFeil = Integer.toString(preferences.getInt("totaltFeil", 0));
         tvStatistikkRiktig.setText(txtStatistikkRiktig);
         tvStatistikkRiktig.setTextColor(Color.GREEN);
         tvStatistikkFeil.setText(txtStatistikkFeil);
@@ -60,8 +72,11 @@ public class SeStatistikk extends AppCompatActivity {
                     .setPositiveButton(popupJa, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            totaltRiktig = 0;
-                            totaltFeil = 0;
+                            antallFeil = 0;
+                            antallRiktig = 0;
+                            editor.putInt("totaltRiktig", 0);
+                            editor.putInt("totaltFeil", 0);
+                            editor.commit();
                             dialogInterface.cancel();
                             Intent intent = getIntent();
                             finish();
