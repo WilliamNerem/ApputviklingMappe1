@@ -35,9 +35,11 @@ public class StartSpill extends AppCompatActivity {
     private TextView tvSvar;
     private TextView button_sendsvar;
     private TextView tvOverskrift;
+    private String continuePopupMelding;
     private String backPopupMelding;
-    private String backPopupJa;
-    private String backPopupNei;
+    private String popupJa;
+    private String popupNei;
+    private String popupOk;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,8 +55,10 @@ public class StartSpill extends AppCompatActivity {
         button_sendsvar = (TextView) findViewById(R.id.button_sendsvar);
         tvOverskrift = (TextView) findViewById(R.id.overskriftStartSpill);
         backPopupMelding = this.getString(R.string.popupMelding);
-        backPopupJa = this.getString(R.string.popupPos);
-        backPopupNei = this.getString(R.string.popupNeg);
+        continuePopupMelding = this.getString(R.string.popupFerdig);
+        popupJa = this.getString(R.string.popupPos);
+        popupNei = this.getString(R.string.popupNeg);
+        popupOk = getBaseContext().getString(R.string.popupOk);
 
         Resources res = getResources();
         regnestykkerArray = res.getStringArray(R.array.regnestykker);
@@ -205,8 +209,8 @@ public class StartSpill extends AppCompatActivity {
                 svarArray = fjernFraArray(svarArray, indexInArray);
                 if(antallRegnestykkerBesvart == 15) {
                     AlertDialog popup = new AlertDialog.Builder(StartSpill.this)
-                            .setMessage(StartSpill.this.getString(R.string.popupFerdig))
-                            .setPositiveButton(getBaseContext().getString(R.string.popupOk), new DialogInterface.OnClickListener() {
+                            .setMessage(continuePopupMelding)
+                            .setPositiveButton(popupOk, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     tilOppsummering();
@@ -293,8 +297,10 @@ public class StartSpill extends AppCompatActivity {
         outState.putStringArray("regnestykkerArray", regnestykkerArray);
         outState.putStringArray("svarArray", svarArray);
         outState.putString("backPopupMelding", backPopupMelding);
-        outState.putString("backPopupJa", backPopupJa);
-        outState.putString("backPopupNei", backPopupNei);
+        outState.putString("continuePopupMelding", continuePopupMelding);
+        outState.putString("popupJa", popupJa);
+        outState.putString("popupNei", popupNei);
+        outState.putString("popupOk", popupOk);
         super.onSaveInstanceState(outState);
     }
 
@@ -315,8 +321,10 @@ public class StartSpill extends AppCompatActivity {
         regnestykkerArray = savedInstanceState.getStringArray("regnestykkerArray");
         svarArray = savedInstanceState.getStringArray("svarArray");
         backPopupMelding = savedInstanceState.getString("backPopupMelding");
-        backPopupJa = savedInstanceState.getString("backPopupJa");
-        backPopupNei = savedInstanceState.getString("backPopupNei");
+        continuePopupMelding = savedInstanceState.getString("continuePopupMelding");
+        popupJa = savedInstanceState.getString("popupJa");
+        popupNei = savedInstanceState.getString("popupNei");
+        popupOk = savedInstanceState.getString("popupOk");
 
     }
 
@@ -324,13 +332,13 @@ public class StartSpill extends AppCompatActivity {
     public void onBackPressed() {
         AlertDialog popup = new AlertDialog.Builder(this)
                 .setMessage(backPopupMelding)
-                .setPositiveButton(backPopupJa, new DialogInterface.OnClickListener() {
+                .setPositiveButton(popupJa, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         finish();
                     }
                 })
-                .setNegativeButton(backPopupNei, new DialogInterface.OnClickListener() {
+                .setNegativeButton(popupNei, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.cancel();
