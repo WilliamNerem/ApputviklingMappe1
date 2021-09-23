@@ -35,6 +35,9 @@ public class StartSpill extends AppCompatActivity {
     private TextView tvSvar;
     private TextView button_sendsvar;
     private TextView tvOverskrift;
+    private String backPopupMelding;
+    private String backPopupJa;
+    private String backPopupNei;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +52,9 @@ public class StartSpill extends AppCompatActivity {
         tvSvar = (TextView) findViewById(R.id.svar);
         button_sendsvar = (TextView) findViewById(R.id.button_sendsvar);
         tvOverskrift = (TextView) findViewById(R.id.overskriftStartSpill);
+        backPopupMelding = this.getString(R.string.popupMelding);
+        backPopupJa = this.getString(R.string.popupPos);
+        backPopupNei = this.getString(R.string.popupNeg);
 
         Resources res = getResources();
         regnestykkerArray = res.getStringArray(R.array.regnestykker);
@@ -267,7 +273,6 @@ public class StartSpill extends AppCompatActivity {
     }
 
     private void tilOppsummering(){
-        Variabler.init = true;
         startActivity(new Intent(StartSpill.this, Oppsummering.class));
         finish();
     }
@@ -287,6 +292,9 @@ public class StartSpill extends AppCompatActivity {
         outState.putInt("intAntallRiktig", antallRiktig);
         outState.putStringArray("regnestykkerArray", regnestykkerArray);
         outState.putStringArray("svarArray", svarArray);
+        outState.putString("backPopupMelding", backPopupMelding);
+        outState.putString("backPopupJa", backPopupJa);
+        outState.putString("backPopupNei", backPopupNei);
         super.onSaveInstanceState(outState);
     }
 
@@ -306,20 +314,23 @@ public class StartSpill extends AppCompatActivity {
         antallRiktig = savedInstanceState.getInt("intAntallRiktig");
         regnestykkerArray = savedInstanceState.getStringArray("regnestykkerArray");
         svarArray = savedInstanceState.getStringArray("svarArray");
+        backPopupMelding = savedInstanceState.getString("backPopupMelding");
+        backPopupJa = savedInstanceState.getString("backPopupJa");
+        backPopupNei = savedInstanceState.getString("backPopupNei");
 
     }
 
     @Override
     public void onBackPressed() {
         AlertDialog popup = new AlertDialog.Builder(this)
-                .setMessage(this.getString(R.string.popupMelding))
-                .setPositiveButton(this.getString(R.string.popupPos), new DialogInterface.OnClickListener() {
+                .setMessage(backPopupMelding)
+                .setPositiveButton(backPopupJa, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         finish();
                     }
                 })
-                .setNegativeButton(this.getString(R.string.popupNeg), new DialogInterface.OnClickListener() {
+                .setNegativeButton(backPopupNei, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.cancel();

@@ -41,16 +41,6 @@ public class Preferanser extends AppCompatActivity {
         tvCurrentPreferanse = (TextView) findViewById(R.id.current_preferanse);
         endrePreferanse();
         settSpråk();
-        if (Variabler.init){
-            Variabler.init = false;
-            reRender();
-        }
-    }
-
-    public void reRender(){
-        Intent intent = getIntent();
-        finish();
-        startActivity(intent);
     }
 
     public void endrePreferanse(){

@@ -19,6 +19,9 @@ public class SeStatistikk extends AppCompatActivity {
     private TextView tvStatistikkTekstFeil;
     private TextView tvOverskrift;
     private TextView tvSlettStatistikk;
+    private String popupMelding;
+    private String popupJa;
+    private String popupNei;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,19 +33,11 @@ public class SeStatistikk extends AppCompatActivity {
         tvSlettStatistikk = (TextView ) findViewById(R.id.slettStatistikk);
         tvStatistikkTekstRiktig = (TextView ) findViewById(R.id.statistikkTekstRiktig);
         tvStatistikkTekstFeil = (TextView ) findViewById(R.id.statistikkTekstFeil);
+        popupMelding = SeStatistikk.this.getString(R.string.popupMeldingStatistikk);
+        popupJa = SeStatistikk.this.getString(R.string.popupPos);
+        popupNei = SeStatistikk.this.getString(R.string.popupNeg);
         renderStatistikk();
         resetStatistikk();
-
-        if (Variabler.init){
-            Variabler.init = false;
-            reRender();
-        }
-    }
-
-    public void reRender(){
-        Intent intent = getIntent();
-        finish();
-        startActivity(intent);
     }
 
     private void renderStatistikk() {
@@ -61,25 +56,25 @@ public class SeStatistikk extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AlertDialog popup = new AlertDialog.Builder(SeStatistikk.this)
-                        .setMessage(SeStatistikk.this.getString(R.string.popupMeldingStatistikk))
-                        .setPositiveButton(SeStatistikk.this.getString(R.string.popupPos), new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                totaltRiktig = 0;
-                                totaltFeil = 0;
-                                dialogInterface.cancel();
-                                Intent intent = getIntent();
-                                finish();
-                                startActivity(intent);
-                            }
-                        })
-                        .setNegativeButton(SeStatistikk.this.getString(R.string.popupNeg), new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                dialogInterface.cancel();
-                            }
-                        })
-                        .show();
+                    .setMessage(popupMelding)
+                    .setPositiveButton(popupJa, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            totaltRiktig = 0;
+                            totaltFeil = 0;
+                            dialogInterface.cancel();
+                            Intent intent = getIntent();
+                            finish();
+                            startActivity(intent);
+                        }
+                    })
+                    .setNegativeButton(popupNei, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.cancel();
+                        }
+                    })
+                    .show();
             }
         });
     }
@@ -92,6 +87,9 @@ public class SeStatistikk extends AppCompatActivity {
         outState.putString("slettStatistikk", tvSlettStatistikk.getText().toString());
         outState.putString("statistikkTekstRiktig", tvStatistikkTekstRiktig.getText().toString());
         outState.putString("statistikkTekstFeil", tvStatistikkTekstFeil.getText().toString());
+        outState.putString("popupMelding", popupMelding);
+        outState.putString("popupJa", popupJa);
+        outState.putString("popupNei", popupNei);
         super.onSaveInstanceState(outState);
 }
 
@@ -104,5 +102,8 @@ public class SeStatistikk extends AppCompatActivity {
         tvSlettStatistikk.setText(savedInstanceState.getString("slettStatistikk"));
         tvStatistikkTekstRiktig.setText(savedInstanceState.getString("statistikkTekstRiktig"));
         tvStatistikkTekstFeil.setText(savedInstanceState.getString("statistikkTekstFeil"));
+        popupMelding = savedInstanceState.getString("popupMelding", popupMelding);
+        popupJa = savedInstanceState.getString("popupJa", popupJa);
+        popupNei = savedInstanceState.getString("popupNei", popupNei);
     }
 }

@@ -12,6 +12,8 @@ public class Oppsummering extends AppCompatActivity {
     private TextView tvOppsummeringInfo;
     private TextView tvOverskrift;
     private TextView tvTilbakeTilMain;
+    private int antallRiktig;
+    private int antallFeil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,24 +25,11 @@ public class Oppsummering extends AppCompatActivity {
         tvTilbakeTilMain = (TextView) findViewById(R.id.button_tilbake_til_main);
         renderInfo();
         tilbakeTilMain();
-
-        if (Variabler.init){
-            Variabler.init = false;
-            reRender();
-        }
-    }
-
-    public void reRender(){
-        Intent intent = getIntent();
-        finish();
-        startActivity(intent);
     }
 
     private void renderInfo(){
-        int antallRiktig = StartSpill.antallRiktig;
-        int antallFeil = StartSpill.antallFeil;
-        SeStatistikk.totaltRiktig += antallRiktig;
-        SeStatistikk.totaltFeil += antallFeil;
+        antallRiktig = StartSpill.antallRiktig;
+        antallFeil = StartSpill.antallFeil;
         String infoTekst = getString(R.string.oppsummeringInfo, antallRiktig, antallFeil);
         tvOppsummeringInfo.setText(infoTekst);
     }
@@ -70,5 +59,13 @@ public class Oppsummering extends AppCompatActivity {
         tvOverskrift.setText(savedInstanceState.getString("Overskrift"));
         tvOppsummeringInfo.setText(savedInstanceState.getString("OppsummeringInfo"));
         tvTilbakeTilMain.setText(savedInstanceState.getString("TilbakeTilMain"));
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        SeStatistikk.totaltRiktig += antallRiktig;
+        SeStatistikk.totaltFeil += antallFeil;
+        super.onBackPressed();
     }
 }

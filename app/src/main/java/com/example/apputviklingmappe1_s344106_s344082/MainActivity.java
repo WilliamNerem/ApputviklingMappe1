@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
         tvButtonStartSpill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Variabler.init = true;
                 startActivity(new Intent(MainActivity.this, StartSpill.class));
             }
 
@@ -56,14 +55,12 @@ public class MainActivity extends AppCompatActivity {
         tvButtonStatistikk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Variabler.init = true;
                 startActivity(new Intent(MainActivity.this, SeStatistikk.class));
             }
         });
         tvButtonPreferanser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Variabler.init = true;
                 startActivity(new Intent(MainActivity.this, Preferanser.class));
             }
         });
