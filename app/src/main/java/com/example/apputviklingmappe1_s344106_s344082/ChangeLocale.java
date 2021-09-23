@@ -10,7 +10,7 @@ import java.util.Locale;
 
 public class ChangeLocale {
 
-    private static final String currentLocale = "no";
+    private static final String currentLocale = "";
 
     public static String getLanguage(Context context) {
         return getPersistedData(context, Locale.getDefault().getLanguage());

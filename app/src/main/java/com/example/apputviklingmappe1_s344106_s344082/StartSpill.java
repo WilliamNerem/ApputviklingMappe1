@@ -1,23 +1,15 @@
 package com.example.apputviklingmappe1_s344106_s344082;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
-
-import java.util.Locale;
 import java.util.Random;
 
 public class StartSpill extends AppCompatActivity {
@@ -68,17 +60,6 @@ public class StartSpill extends AppCompatActivity {
         sendSvar();
         hentRegnestykke();
         renderRiktigOgFeil();
-
-        if (Variabler.init){
-            Variabler.init = false;
-            reRender();
-        }
-    }
-
-    public void reRender(){
-        Intent intent = getIntent();
-        finish();
-        startActivity(intent);
     }
 
     private void renderRiktigOgFeil(){
@@ -167,7 +148,7 @@ public class StartSpill extends AppCompatActivity {
         } else {
             currentSvar = currentSvar * 10 + i;
         }
-        if(currentSvar < 1000 && currentSvar > -1) {
+        if(currentSvar < 21 && currentSvar > -1) {
             String strSvar = Integer.toString(currentSvar);
             tvSvar.setText(strSvar);
         }
@@ -179,7 +160,6 @@ public class StartSpill extends AppCompatActivity {
         slett.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String gammelTekst = tvSvar.getText().toString();
-                int svarLengde = String.valueOf(currentSvar).length();
 
                 if (currentSvar < 0){
                     return;
@@ -204,40 +184,43 @@ public class StartSpill extends AppCompatActivity {
         svar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 antallRegnestykkerBesvart++;
-                sjekkSvar();
-                alleSpmBesvart();
+                String sjekk = sjekkSvar();
+                if (sjekk.equals("alleSpmBesvart")){
+                    return;
+                }
+                regnestykkerArray = fjernFraArray(regnestykkerArray, indexInArray);
+                svarArray = fjernFraArray(svarArray, indexInArray);
+                if (antallRegnestykkerBesvart == 15){
+                    alleSpmBesvart();
+                    return;
+                } else if (Preferanser.currentPreferanse == antallRegnestykkerBesvart){
+                    tilOppsummering();
+                    return;
+                }
+                String setTekst = getString(R.string.svar);
+                tvSvar.setText(setTekst);
+                currentSvar = -1;
+                hentRegnestykke();
             }
         });
     }
 
     private void alleSpmBesvart(){
-        regnestykkerArray = fjernFraArray(regnestykkerArray, indexInArray);
-        svarArray = fjernFraArray(svarArray, indexInArray);
-        if(antallRegnestykkerBesvart == 15) {
-            AlertDialog popup = new AlertDialog.Builder(StartSpill.this)
-                    .setMessage(continuePopupMelding)
-                    .setPositiveButton(popupOk, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            tilOppsummering();
-                        }
-                    })
-                    .show();
-            return;
-        }
-        else if (Preferanser.currentPreferanse == antallRegnestykkerBesvart){
-            tilOppsummering();
-            return;
-        }
-        String setTekst = getString(R.string.svar);
-        tvSvar.setText(setTekst);
-        currentSvar = -1;
-        hentRegnestykke();
+        new AlertDialog.Builder(StartSpill.this)
+            .setMessage(continuePopupMelding)
+            .setPositiveButton(popupOk, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    tilOppsummering();
+                }
+            })
+            .show();
     }
 
-    private void sjekkSvar(){
-        if (regnestykkerArray.length == 0){
+    private String sjekkSvar(){
+        if (antallRegnestykkerBesvart == 16){
             alleSpmBesvart();
+            return "alleSpmBesvart";
         }
         int svar = Integer.parseInt(svarArray[indexInArray]);
 
@@ -246,6 +229,7 @@ public class StartSpill extends AppCompatActivity {
         } else {
             oppdaterAntallRikitgOgFeil(tvAntallFeil, "feil");
         }
+        return "";
     }
 
     private void oppdaterAntallRikitgOgFeil(TextView tv, String check){
@@ -268,7 +252,7 @@ public class StartSpill extends AppCompatActivity {
         indexInArray = randomRegnestykke;
     }
 
-    private String[] fjernFraArray(String[] arr, int fjernIndex){
+    private String[] fjernFraArray(String[] arr, int fjernIndex){ //sjekk hvorfor den ikke brukes
         String[] tmpArray = new String[arr.length - 1];
         int index = 0;
 
@@ -337,20 +321,20 @@ public class StartSpill extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        AlertDialog popup = new AlertDialog.Builder(this)
-                .setMessage(backPopupMelding)
-                .setPositiveButton(popupJa, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        finish();
-                    }
-                })
-                .setNegativeButton(popupNei, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.cancel();
-                    }
-                })
-                .show();
+        new AlertDialog.Builder(this)
+            .setMessage(backPopupMelding)
+            .setPositiveButton(popupJa, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    finish();
+                }
+            })
+            .setNegativeButton(popupNei, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dialogInterface.cancel();
+                }
+            })
+            .show();
     }
 }

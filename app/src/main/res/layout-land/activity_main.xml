@@ -8,6 +8,7 @@
     tools:context=".MainActivity"
     android:orientation="vertical"
     android:background="@drawable/math_background">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -23,8 +24,7 @@
             android:paddingHorizontal="20dp"
             android:paddingVertical="5dp"
             android:background="@drawable/button_border"
-            android:layout_marginTop="10dp"
-            />
+            android:layout_marginTop="10dp"/>
 
     </LinearLayout>
 
@@ -34,7 +34,6 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-
         <Button
             android:id="@+id/button_start"
             android:layout_width="wrap_content"
@@ -42,7 +41,7 @@
             android:layout_marginTop="30dp"
             android:width="150dp"
             android:background="@drawable/button_border"
-            android:text="@string/startspill" />
+            android:text="@string/startspill"/>
 
         <Button
             android:id="@+id/button_statistikk"
@@ -52,7 +51,7 @@
             android:layout_marginStart="30dp"
             android:width="150dp"
             android:background="@drawable/button_border"
-            android:text="@string/sestatistikk" />
+            android:text="@string/sestatistikk"/>
 
         <Button
             android:id="@+id/button_preferanser"
@@ -62,7 +61,8 @@
             android:layout_marginStart="30dp"
             android:width="150dp"
             android:background="@drawable/button_border"
-            android:text="@string/preferanser" />
+            android:text="@string/preferanser"/>
+
     </LinearLayout>
 
 </RelativeLayout>

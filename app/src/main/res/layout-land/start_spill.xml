@@ -12,6 +12,7 @@
         android:layout_height="match_parent"
         android:gravity="center_horizontal"
         android:orientation="vertical">
+
         <TextView
             android:id="@+id/overskriftStartSpill"
             android:layout_width="wrap_content"
@@ -19,12 +20,13 @@
             android:text="@string/overskriftStartSpill"
             android:textSize="35sp"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp">
-        </TextView>
+            android:layout_marginTop="10dp"/>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="100dp">
+
             <TextView
                 android:id="@+id/antallRiktig"
                 android:layout_width="wrap_content"
@@ -33,6 +35,7 @@
                 android:text="@string/antallRiktig"
                 android:textSize="11sp"
                 android:layout_alignParentStart="true"/>
+
             <TextView
                 android:id="@+id/antallFeil"
                 android:layout_width="wrap_content"
@@ -41,18 +44,20 @@
                 android:text="@string/antallFeil"
                 android:textSize="11sp"
                 android:layout_alignParentEnd="true"/>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal">
+
                 <TextView
                     android:id="@+id/regnestykke"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
                     android:text="@string/regnestykke"
-                    android:textSize="32sp">
-                </TextView>
+                    android:textSize="32sp"/>
+
                 <TextView
                     android:id="@+id/svar"
                     android:layout_width="wrap_content"
@@ -60,11 +65,12 @@
                     android:gravity="start"
                     android:text="@string/svar"
                     android:maxLength="3"
-                    android:textSize="32sp">
-                </TextView>
+                    android:textSize="32sp"/>
 
             </LinearLayout>
+
         </RelativeLayout>
+
     </LinearLayout>
 
     <LinearLayout
@@ -86,13 +92,14 @@
                 android:id="@+id/slett"
                 android:layout_width="88dp"
                 android:layout_height="match_parent"
-                android:src="@drawable/back_icon" />
+                android:src="@drawable/back_icon"/>
 
             <Button
                 android:id="@+id/button_sendsvar"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="@string/button_sendsvar" />
+                android:text="@string/button_sendsvar"/>
+
         </LinearLayout>
 
         <TableRow
@@ -104,31 +111,31 @@
                 android:id="@+id/button_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/button1" />
+                android:text="@string/button1"/>
 
             <Button
                 android:id="@+id/button_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/button2" />
+                android:text="@string/button2"/>
 
             <Button
                 android:id="@+id/button_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/button3" />
+                android:text="@string/button3"/>
 
             <Button
                 android:id="@+id/button_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/button4" />
+                android:text="@string/button4"/>
 
             <Button
                 android:id="@+id/button_5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/button5" />
+                android:text="@string/button5"/>
 
         </TableRow>
 
@@ -141,31 +148,31 @@
                 android:id="@+id/button_6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/button6" />
+                android:text="@string/button6"/>
 
             <Button
                 android:id="@+id/button_7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/button7" />
+                android:text="@string/button7"/>
 
             <Button
                 android:id="@+id/button_8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/button8" />
+                android:text="@string/button8"/>
 
             <Button
                 android:id="@+id/button_9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/button9" />
+                android:text="@string/button9"/>
 
             <Button
                 android:id="@+id/button_0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/button0" />
+                android:text="@string/button0"/>
         </TableRow>
 
         <TableRow
@@ -173,14 +180,14 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center">
 
-
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="28dp"
-            android:gravity="end"></TableRow>
+            android:gravity="end"/>
+
     </LinearLayout>
 
 </RelativeLayout>
