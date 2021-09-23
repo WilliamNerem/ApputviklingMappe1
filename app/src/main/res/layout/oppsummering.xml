@@ -11,7 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp">
 
         <TextView
             android:id="@+id/overskriftOppsummering"
@@ -29,12 +31,24 @@
 
         <TextView
             android:id="@+id/oppsummeringInfo"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:textSize="18sp"
             android:gravity="center_horizontal"
-            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            />
+
+        <TextView
+            android:id="@+id/oppsummeringTekst"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/oppsummeringTekst"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="50dp"
             />
 
     </LinearLayout>
@@ -42,8 +56,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="bottom|center_horizontal"
         android:layout_marginBottom="10dp"
+        android:gravity="bottom|center_horizontal"
         android:orientation="vertical">
 
         <Button

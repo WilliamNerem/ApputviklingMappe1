@@ -205,35 +205,40 @@ public class StartSpill extends AppCompatActivity {
             public void onClick(View v) {
                 antallRegnestykkerBesvart++;
                 sjekkSvar();
-                regnestykkerArray = fjernFraArray(regnestykkerArray, indexInArray);
-                svarArray = fjernFraArray(svarArray, indexInArray);
-                if(antallRegnestykkerBesvart == 15) {
-                    AlertDialog popup = new AlertDialog.Builder(StartSpill.this)
-                            .setMessage(continuePopupMelding)
-                            .setPositiveButton(popupOk, new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    tilOppsummering();
-                                }
-                            })
-                            .show();
-                    return;
-                }
-                else if (Preferanser.currentPreferanse == antallRegnestykkerBesvart){
-                    tilOppsummering();
-                    return;
-                }
-                String setTekst = getString(R.string.svar);
-                tvSvar.setText(setTekst);
-                currentSvar = -1;
-                hentRegnestykke();
+                alleSpmBesvart();
             }
         });
     }
 
+    private void alleSpmBesvart(){
+        regnestykkerArray = fjernFraArray(regnestykkerArray, indexInArray);
+        svarArray = fjernFraArray(svarArray, indexInArray);
+        if(antallRegnestykkerBesvart == 15) {
+            AlertDialog popup = new AlertDialog.Builder(StartSpill.this)
+                    .setMessage(continuePopupMelding)
+                    .setPositiveButton(popupOk, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            tilOppsummering();
+                        }
+                    })
+                    .show();
+            return;
+        }
+        else if (Preferanser.currentPreferanse == antallRegnestykkerBesvart){
+            tilOppsummering();
+            return;
+        }
+        String setTekst = getString(R.string.svar);
+        tvSvar.setText(setTekst);
+        currentSvar = -1;
+        hentRegnestykke();
+    }
+
     private void sjekkSvar(){
-
-
+        if (regnestykkerArray.length == 0){
+            alleSpmBesvart();
+        }
         int svar = Integer.parseInt(svarArray[indexInArray]);
 
         if (svar == currentSvar){

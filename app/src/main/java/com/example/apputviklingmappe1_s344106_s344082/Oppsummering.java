@@ -11,6 +11,7 @@ public class Oppsummering extends AppCompatActivity {
 
     private TextView tvOppsummeringInfo;
     private TextView tvOverskrift;
+    private TextView tvOppsummeringTekst;
     private TextView tvTilbakeTilMain;
     private int antallRiktig;
     private int antallFeil;
@@ -22,6 +23,7 @@ public class Oppsummering extends AppCompatActivity {
 
         tvOppsummeringInfo = (TextView) findViewById(R.id.oppsummeringInfo);
         tvOverskrift = (TextView) findViewById(R.id.overskriftOppsummering);
+        tvOppsummeringTekst = (TextView) findViewById(R.id.oppsummeringTekst);
         tvTilbakeTilMain = (TextView) findViewById(R.id.button_tilbake_til_main);
         renderInfo();
         tilbakeTilMain();
@@ -48,6 +50,7 @@ public class Oppsummering extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         outState.putString("Overskrift", tvOverskrift.getText().toString());
+        outState.putString("oppsummeringTekst", tvOppsummeringTekst.getText().toString());
         outState.putString("OppsummeringInfo", tvOppsummeringInfo.getText().toString());
         outState.putString("TilbakeTilMain", tvTilbakeTilMain.getText().toString());
         super.onSaveInstanceState(outState);
@@ -57,6 +60,7 @@ public class Oppsummering extends AppCompatActivity {
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         tvOverskrift.setText(savedInstanceState.getString("Overskrift"));
+        tvOppsummeringTekst.setText(savedInstanceState.getString("oppsummeringTekst"));
         tvOppsummeringInfo.setText(savedInstanceState.getString("OppsummeringInfo"));
         tvTilbakeTilMain.setText(savedInstanceState.getString("TilbakeTilMain"));
     }

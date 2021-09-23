@@ -44,4 +44,5 @@
     <string name="popupOk">OK</string>
     <string name="svarProsentTekst">Prosent riktig: </string>
     <string name="svarProsent"/>
+    <string name="oppsummeringTekst">En komplett oversikt finner du på statistikksiden.</string>
 </resources>
