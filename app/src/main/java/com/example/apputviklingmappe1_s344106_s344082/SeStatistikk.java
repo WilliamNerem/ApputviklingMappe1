@@ -86,7 +86,7 @@ public class SeStatistikk extends AppCompatActivity {
         resetStatistikk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog popup = new AlertDialog.Builder(SeStatistikk.this)
+                new AlertDialog.Builder(SeStatistikk.this)
                     .setMessage(popupMelding)
                     .setPositiveButton(popupJa, new DialogInterface.OnClickListener() {
                         @Override
@@ -97,9 +97,7 @@ public class SeStatistikk extends AppCompatActivity {
                             editor.putInt("totaltFeil", 0);
                             editor.commit();
                             dialogInterface.cancel();
-                            Intent intent = getIntent();
-                            finish();
-                            startActivity(intent);
+                            reRender();
                         }
                     })
                     .setNegativeButton(popupNei, new DialogInterface.OnClickListener() {
@@ -111,6 +109,12 @@ public class SeStatistikk extends AppCompatActivity {
                     .show();
             }
         });
+    }
+
+    private void reRender(){
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
     }
 
     @Override

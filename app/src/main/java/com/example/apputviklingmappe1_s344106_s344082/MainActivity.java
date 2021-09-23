@@ -1,20 +1,11 @@
 package com.example.apputviklingmappe1_s344106_s344082;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
-
-import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
     private Button tvButtonStartSpill;
     private Button tvButtonStatistikk;
     private Button tvButtonPreferanser;
+    static boolean init;
 
 
     @Override
@@ -87,8 +79,8 @@ public class MainActivity extends AppCompatActivity {
     public void onResume() {
         super.onResume();
 
-        if (Variabler.init){
-            Variabler.init = false;
+        if (init){
+            init = false;
             reRender();
         }
     }

@@ -12,6 +12,7 @@
         android:layout_height="match_parent"
         android:gravity="center_horizontal"
         android:orientation="vertical">
+
         <TextView
             android:id="@+id/overskriftStartSpill"
             android:layout_width="wrap_content"
@@ -20,8 +21,8 @@
             android:gravity="center_horizontal"
             android:textSize="35sp"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp">
-        </TextView>
+            android:layout_marginTop="10dp"/>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -34,6 +35,7 @@
                 android:layout_marginStart="20dp"
                 android:textSize="11sp"
                 android:maxWidth="130dp"/>
+
             <TextView
                 android:id="@+id/antallFeil"
                 android:layout_width="wrap_content"
@@ -43,6 +45,7 @@
                 android:gravity="end"
                 android:layout_alignParentEnd="true"
                 android:maxWidth="130dp"/>
+
         </RelativeLayout>
 
         <LinearLayout
@@ -58,14 +61,15 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:layout_marginBottom="40dp">
+
                 <TextView
                     android:id="@+id/regnestykke"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
                     android:text="@string/regnestykke"
-                    android:textSize="35sp">
-                </TextView>
+                    android:textSize="35sp"/>
+
                 <TextView
                     android:id="@+id/svar"
                     android:layout_width="wrap_content"
@@ -73,8 +77,7 @@
                     android:gravity="start"
                     android:text="@string/svar"
                     android:maxLength="3"
-                    android:textSize="35sp">
-                </TextView>
+                    android:textSize="35sp"/>
 
             </LinearLayout>
 
@@ -89,7 +92,8 @@
                     android:id="@+id/button_sendsvar"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="@string/button_sendsvar" />
+                    android:text="@string/button_sendsvar"/>
+
             </LinearLayout>
 
             <TableRow
@@ -101,19 +105,20 @@
                     android:id="@+id/button_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/button1" />
+                    android:text="@string/button1"/>
 
                 <Button
                     android:id="@+id/button_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/button2" />
+                    android:text="@string/button2"/>
 
                 <Button
                     android:id="@+id/button_3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/button3" />
+                    android:text="@string/button3"/>
+
             </TableRow>
 
             <TableRow
@@ -125,19 +130,20 @@
                     android:id="@+id/button_4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/button4" />
+                    android:text="@string/button4"/>
 
                 <Button
                     android:id="@+id/button_5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/button5" />
+                    android:text="@string/button5"/>
 
                 <Button
                     android:id="@+id/button_6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/button6" />
+                    android:text="@string/button6"/>
+
             </TableRow>
 
             <TableRow
@@ -149,19 +155,20 @@
                     android:id="@+id/button_7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/button7" />
+                    android:text="@string/button7"/>
 
                 <Button
                     android:id="@+id/button_8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/button8" />
+                    android:text="@string/button8"/>
 
                 <Button
                     android:id="@+id/button_9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/button9" />
+                    android:text="@string/button9"/>
+
             </TableRow>
 
             <TableRow
@@ -174,15 +181,18 @@
                     android:id="@+id/button_0"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/button0" />
+                    android:text="@string/button0"/>
 
                 <ImageButton
                     android:id="@+id/slett"
                     android:layout_width="88dp"
                     android:layout_height="match_parent"
-                    android:src="@drawable/back_icon" />
+                    android:src="@drawable/back_icon"/>
+
             </TableRow>
+
         </LinearLayout>
+
     </LinearLayout>
 
 </RelativeLayout>

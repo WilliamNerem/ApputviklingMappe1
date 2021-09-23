@@ -1,10 +1,7 @@
 package com.example.apputviklingmappe1_s344106_s344082;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,14 +10,10 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import java.util.Locale;
-
 public class Preferanser extends AppCompatActivity {
-    private SharedPreferences currentLocale;
     private SharedPreferences.Editor editLocale;
 
     static int currentPreferanse = 5;
-    static boolean localHasChanged = false;
     private TextView tvOverskrift;
     private TextView tvVelgSpraak;
     private TextView tvPreferanserInfo;
@@ -31,7 +24,7 @@ public class Preferanser extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.preferanser);
 
-        currentLocale = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences currentLocale = PreferenceManager.getDefaultSharedPreferences(this);
         editLocale = currentLocale.edit();
 
         ChangeLocale.setLocale(Preferanser.this, currentLocale.getString("locale", ""));
@@ -90,9 +83,7 @@ public class Preferanser extends AppCompatActivity {
               ChangeLocale.setLocale(Preferanser.this, "");
               editLocale.putString("locale", "");
               editLocale.commit();
-              Intent intent = getIntent();
-              finish();
-              startActivity(intent);
+              reRender();
           }
       });
 
@@ -102,11 +93,15 @@ public class Preferanser extends AppCompatActivity {
              ChangeLocale.setLocale(Preferanser.this, "de");
              editLocale.putString("locale", "de");
              editLocale.commit();
-             Intent intent = getIntent();
-             finish();
-             startActivity(intent);
+             reRender();
           }
         });
+    }
+
+    private void reRender(){
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
     }
 
     @Override
@@ -130,7 +125,7 @@ public class Preferanser extends AppCompatActivity {
     @Override
     public void onBackPressed()
     {
-        Variabler.init = true;
+        MainActivity.init = true;
         super.onBackPressed();
     }
 }

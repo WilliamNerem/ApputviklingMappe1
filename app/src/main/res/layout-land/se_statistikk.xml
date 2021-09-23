@@ -7,11 +7,13 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:orientation="vertical">
+
         <TextView
             android:id="@+id/overskriftStatistikk"
             android:layout_width="wrap_content"
@@ -23,19 +25,20 @@
             android:paddingVertical="5dp"
             android:background="@drawable/button_border"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="20dp"
-            />
+            android:layout_marginBottom="20dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal">
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:orientation="vertical"
                 android:layout_marginTop="20dp">
+
                 <TextView
                     android:id="@+id/statistikkTekstRiktig"
                     android:text="@string/statistikkTekstRiktig"
@@ -44,24 +47,23 @@
                     android:maxWidth="200dp"
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    android:gravity="center_horizontal"
-                    >
-                </TextView>
+                    android:gravity="center_horizontal"/>
+
                 <TextView
                     android:id="@+id/statistikkRiktig"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
                     android:textSize="40sp"
-                    android:gravity="center_horizontal"
-                    />
+                    android:gravity="center_horizontal"/>
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="40dp">
-            </LinearLayout>
+                android:layout_marginHorizontal="40dp"/>
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -69,6 +71,7 @@
                 android:orientation="vertical"
                 android:layout_marginTop="20dp"
                 android:gravity="center_horizontal">
+
                 <TextView
                     android:id="@+id/statistikkTekstFeil"
                     android:text="@string/statistikkTekstFeil"
@@ -77,8 +80,7 @@
                     android:maxWidth="200dp"
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    android:gravity="center_horizontal">
-                </TextView>
+                    android:gravity="center_horizontal"/>
 
                 <TextView
                     android:id="@+id/statistikkFeil"
@@ -86,14 +88,17 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
                     android:textSize="40sp"
-                    android:gravity="center_horizontal"
-                    />
+                    android:gravity="center_horizontal"/>
+
             </LinearLayout>
+
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal">
+
             <TextView
                 android:id="@+id/svarProsentTekst"
                 android:layout_width="wrap_content"
@@ -102,13 +107,16 @@
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:layout_marginEnd="2dp"/>
+
             <TextView
                 android:id="@+id/svarProsent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:textSize="16sp"/>
+
         </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout
@@ -124,7 +132,7 @@
             android:layout_height="wrap_content"
             android:width="150dp"
             android:background="@drawable/button_border"
-            android:text="@string/slettStatistikk" />
+            android:text="@string/slettStatistikk"/>
 
     </LinearLayout>
 
